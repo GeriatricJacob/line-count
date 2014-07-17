@@ -1,0 +1,16 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  '.overlayer':
+      'Enable line-count': 'line-count:toggle'
+
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'line-count'
+      'submenu': [
+        { 'label': 'Toggle', 'command': 'line-count:toggle' }
+      ]
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "name": "line-count",
+  "main": "./lib/line-count",
+  "version": "0.1.0",
+  "description": "Show a line count of file",
+  "activationEvents": ["line-count:toggle"],
+  "repository": "https://github.com/atom/line-count",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+  }
+}
