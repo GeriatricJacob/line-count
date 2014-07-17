@@ -8,3 +8,6 @@ module.exports =
 
   deactivate: ->
     @lineCountView.destroy()
+
+  serialize: ->
+    lineCountViewState: @lineCountView.serialize()

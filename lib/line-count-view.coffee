@@ -1,33 +1,38 @@
+###
+ asd
+###
+
 {View} = require 'atom'
 
 module.exports =
 class LineCountView extends View
   @content: ->
-    editor      = atom.workspace.activePaneItem
-    buffer      = editor.getBuffer()
-    origRange   = editor.getSelection().getBufferRange()
-    selText     = editor.getSelectedText().replace /[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&"
+    editor     = atom.workspace.activePaneItem
+    buffer     = editor.getBuffer()
 
-    if not selText then return
+    inComment = no
+    totalCount = commentCount = 0
+    buffer.scan /^.*$/g, (res) ->
+      totalCount++
+      text = buffer.getTextInRange res.range
 
-    origIdx = null
-    matchArray = []
-    buffer.scan new RegExp(selText, 'ig'), (res) ->
-      if res.range.isEqual origRange
-        origIdx = matchArray.length
-      matchArray.push res
+      if not text or /^\s*#/.test text then commentCount++; return
 
-    if matchArray.length < 2 or origIdx is null then return
+      if (matches = /(\S*).*###.*(\S*).*(###)?.*(\S*)$/.exec text)
+        if not inComment
+          if not matches[3]
+            if not matches[1] then commentCount++
+            inComment = yes
+          else
+            if not matches[2] then commentCount++
+        else
+          if not matches[3]
+            if not matches[2] and not matches[4] then commentCount++
+          else
+            if not matches[2] then commentCount++
+          inComment = matches[3]
 
-    if dir > 0
-      if origIdx is matchArray.length - 1 then selMatchIdx = 0
-      else selMatchIdx = origIdx + 1
-    else
-      if origIdx is 0 then selMatchIdx = matchArray.length - 1
-      else selMatchIdx = origIdx - 1
-
-    editor.setSelectedBufferRanges [matchArray[selMatchIdx].range]
-
+      console.log {totalCount, commentCount}
 
     @div class: 'line-count overlay from-top', =>
       @div "The LineCount package is Alive! It's ALIVE!", class: "message"

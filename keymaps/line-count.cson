@@ -7,5 +7,5 @@
 
 # For more detailed documentation see
 # https://atom.io/docs/latest/advanced/keymaps
-'.workspace':
-  'ctrl-alt-o': 'line-count:toggle'
+'.workspace .editor':
+  'ctrl-alt-shift-l': 'line-count:toggle'
