@@ -1,7 +1,7 @@
 {
   "name": "line-count",
   "main": "./lib/line-count",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Show line counts for files in projects",
   "activationEvents": ["line-count:open"],
   "repository": "https://github.com/mark-hahn/line-count",
