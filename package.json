@@ -2,13 +2,15 @@
   "name": "line-count",
   "main": "./lib/line-count",
   "version": "0.1.0",
-  "description": "Show a line count of file",
-  "activationEvents": ["line-count:toggle"],
-  "repository": "https://github.com/atom/line-count",
-  "license": "MIT",
+  "description": "Show line counts for files in projects",
+  "activationEvents": ["line-count:open"],
+  "repository": "https://github.com/mark-hahn/line-count",
+  "license": "GPLv3",
   "engines": {
     "atom": ">0.50.0"
   },
   "dependencies": {
+    "sloc": ">=0.0.8",
+    "filewalker": ">=0.1.2"
   }
 }

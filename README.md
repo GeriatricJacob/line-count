@@ -1,5 +1,30 @@
 # line-count package
 
-Show line counts.  Useful for program code files.
+Press ctrl-shift-l (line-count:open) to open an editor page showing line counts broken down by file and type for all files in the project.
 
-Press ctrl-shift-l to toggle a pop-up showing both line count with comments and line count without comments.
+File types supported are ..
+
+- CoffeeScript
+- C / C++
+- CSS / SCSS / LESS / Stylus
+- Go
+- HTML
+- Java
+- JavaScript
+- Lua
+- Python
+- PHP
+
+If you want to add a new type contact mark@hahnca.com or better yet, fork this project and do it yourself.
+
+### Notes
+
+- Any folder named `node_modules` is ignored.
+- Tests have not been implemented yet.
+- Please report problems to [github issues](https://github.com/mark-hahn/line-count/issues).
+
+### Credit
+The engine used by line-count is sloc by Markus Kohlhase.  His project can be found [here](https://github.com/flosse/sloc).
+
+### License
+I would prefer MIT but I am forced to make it GPLv3 because sloc is GPLv3.  I don't think it matters for a tool like this.
