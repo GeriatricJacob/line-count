@@ -1,0 +1,8 @@
+- %w(very-small small \  large very-large).each do |size|
+  .pure-g
+    - [false, true].each do |disabled|
+      .pure-u-1-2
+        - %w(\  blue green yellow red).each do |color|
+          %button.button{class: "#{size} #{color}", disabled: disabled}
+            .icon-ok
+            Button

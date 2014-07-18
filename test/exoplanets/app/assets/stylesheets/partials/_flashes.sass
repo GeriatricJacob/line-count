@@ -1,0 +1,35 @@
+.notice
+  background: transparentize($color-green-light, 0.6)
+  border: 1px solid  transparentize($color-green-light, 0.4)
+
+  +before('\f058')
+    font-family: $font-awesome
+    color: $color-green-light
+    margin-right: $fib-5
+
+.error, .alert
+  background: transparentize($color-red-light, 0.6)
+  border: 1px solid  transparentize($color-red-light, 0.4)
+
+  +before('\f06a')
+    font-family: $font-awesome
+    color: $color-red-light
+    margin-right: $fib-5
+
+.notice, .error, .alert
+  color: $color-grey-3
+  padding: 5px 8px
+  margin: 13px 0
+  overflow: hidden
+  display: block
+
+  +text-shadow(0 0 3px transparentize($color-blue-dark, 0.5))
+  +border-radius(4px, 6px)
+  +transition(opacity 0.3s, height 0.3s linear 0.5s, padding 0.3s linear 0.5s, margin 0.3s linear 0.5s)
+
+  &.hidden
+    margin: 0
+    height: 0 !important
+    padding: 0
+    +opacity(0)
+

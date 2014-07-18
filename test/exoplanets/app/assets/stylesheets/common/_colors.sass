@@ -1,0 +1,56 @@
+
+$color-grey-1: #e3f8f6
+$color-grey-2: #d4ebeb
+$color-grey-3: #bcd7d9
+$color-grey-4: #bfdadb
+$color-grey-5: #a9c7ca
+$color-grey-6: #7ea4aa
+$color-grey-7: #728992
+$color-grey-8: #435762
+$color-grey-9: #2d3b45
+$color-grey-10: #172430
+
+$color-blue-very-dark: #101c28
+$color-blue-dark: #082e43
+$color-blue-medium: #045573
+$color-blue-light: #01aef0
+
+$color-green-medium: #57a71c
+$color-green-light: #6cff00
+
+$color-yellow-medium: #8ec63d
+$color-yellow-light: #c4fe13
+
+$color-red-medium: #c73f7d
+$color-red-light: #ff729c
+
+$pad-color: $color-grey-2
+$pad-hover-color: $color-grey-1
+$pad-border-color: $color-grey-6
+$pad-text-color: $color-grey-9
+$pad-shadow-color: transparentize($color-blue-dark, 0.3)
+$pad-shadow: 0 2px 4px $pad-shadow-color
+$pad-inner-shadow: inset 0 1px 4px $pad-shadow-color
+$pad-arrow-shadow: 2px -1px 2px -1px $pad-shadow-color
+$pad-arrow-inner-shadow: inset -1px 2px 2px -1px $pad-shadow-color
+
+$card-color: $color-grey-1
+$card-border-color: $color-grey-4
+$card-dark-color: $color-blue-medium
+$card-dark-border-color: $color-blue-very-dark
+$card-light-text-color: $color-grey-4
+$card-dark-text-color: $color-grey-8
+$card-shadow-color: transparentize($color-blue-dark, 0.6)
+$card-shadow: 0 2px 6px $card-shadow-color
+
+@function hover-color($color)
+  @return lighten(saturate($color, 5), 10)
+
+@function disabled-color($color)
+  @return lighten(desaturate($color, 70), 10)
+
+@function disabled-border-color($color)
+  @return lighten(desaturate($color, 70), 15)
+
+@function disabled-text-color($color)
+  @return lighten(desaturate($color, 70), 20)

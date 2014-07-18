@@ -1,0 +1,21 @@
+= simple_form_for current_user, url: '/', method: :get do |f|
+  %fieldset.inputs
+    = f.input :email
+    .pure-g
+      .pure-u-1-2= f.input :first_name
+      .pure-u-1-2= f.input :last_name
+
+    .pure-g
+      .pure-u-1-2= f.input :avatar
+      .pure-u-1-2.small
+        = render partial: 'input', locals: { type: :range, name: 'weight', value: 75, attrs: { 'min-value' => 0, 'max-value' => 100 } }
+        = render partial: 'input', locals: { type: :range, name: 'weight', value: 75, attrs: { 'min-value' => 0, 'max-value' => 100 } }
+
+    = f.input :created_at, wrapper_html: { class: 'small' }
+    = f.input :updated_at, wrapper_html: { class: 'disabled small' }, input_html: { disabled: true }
+
+    .password
+      = f.input :password, :required => true, as: :pwdcalc_simple, placeholder: 'simple_form.placeholders.user.password'.t
+      = f.input :password_confirmation
+
+  = default_actions submit: 'actions.update'.t, icon: 'icon-ok', class: 'large'

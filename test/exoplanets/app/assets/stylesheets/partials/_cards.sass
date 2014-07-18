@@ -1,0 +1,54 @@
+=card
+  overflow: hidden
+  white-space: nowrap
+
+  +relative
+  +border-radius(4px)
+  +box-shadow($card-shadow)
+
+  .front, .back
+    padding: $fib-6
+    display: inline-block
+    width: 100%
+    color: $card-dark-text-color
+
+    +transition(all 0.3s)
+
+  .front
+    border-bottom: 2px solid $card-border-color
+    background: $card-color
+    +transform(translate3d(0, 0, 0))
+
+  .back
+    border-bottom: 2px solid $card-dark-border-color
+    background: $card-dark-color
+    color: $card-light-text-color
+    bottom: 0
+
+    +absolute
+    +transform(translate3d(100%, 0, 0))
+
+  .icon-refresh
+    right: $fib-4
+    cursor: pointer
+
+    +absolute($fib-4, initial)
+    +opacity(0)
+    +transition(all, 0.3s)
+
+  &:hover
+    .icon-refresh
+      +opacity(1)
+
+  &.flipped
+    .front
+      +transform(translate3d(-100%, 0, 0))
+
+    .back
+      +transform(translate3d(0, 0, 0))
+
+    .icon-refresh
+      color: $card-light-text-color
+
+.card
+  +card

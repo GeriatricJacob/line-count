@@ -1,0 +1,193 @@
+
+
+.breadcrumb
+
+  +inline-list()
+  +box-shadow($pad-shadow)
+  +border-radius($pad-border-radius-x, $pad-border-radius-y)
+
+  margin-right: 15px
+  letter-spacing: normal
+  height: 29px
+
+  li
+    cursor: pointer
+    position: relative
+    vertical-align: top
+    border: 0px solid $pad-border-color
+    border-left: 0px solid transparent
+    border-right: 3px solid transparent
+    border-top-color: $pad-color
+    z-index: 1
+
+    +transition(all 0.2s)
+    +bevel-x
+    +border-radius-top(3px)
+
+    @extend %button-font
+
+    &, span, a
+      background: $pad-color
+
+    span, a
+      display: block
+      height: 100%
+      margin: 0
+      border-bottom: none
+
+      +transition(none)
+      +border-radius-right(3px)
+
+      @extend %button-padding
+
+    & + li
+      border-right: 0
+
+      span, a
+        padding-left: 24px
+
+      +before
+        border: 0px solid transparent
+        border-top-color: $pad-border-color
+        border-right-color: $pad-border-color
+
+        +right-arrow($pad-color, $pad-border-color, 0.5)
+        +absolute(2.8px, -12px)
+
+
+    &:first-child
+      // border-left: 1px solid $pad-border-color
+      border-right-width: 0px
+
+      &, span, a
+        +border-radius($pad-border-radius-x 3px 0 $pad-border-radius-x)
+
+      &:active
+        // border-left-width: 1px
+        +border-radius($pad-border-radius-x 3px 0 $pad-border-radius-x)
+
+
+    &.active, &:last-child, &:active
+      border-left: 0px solid transparent
+      border-right: 0px solid transparent
+
+      +border-radius(0)
+      +bevel-x(1px)
+
+      &:not(:first-child):before
+        +absolute(1px, -12.5px)
+        +right-arrow($pad-color, $pad-border-color, 3px)
+        +box-shadow($pad-arrow-shadow)
+
+      & + li
+        // border-left: 3px solid transparent
+
+        &:before
+          +box-shadow($pad-arrow-inner-shadow)
+          +right-arrow-inner-bevel(3px)
+          +absolute(3.5px, -12px)
+
+      & + li.active, & + li:last-child, & + li:active
+        &:before
+          +box-shadow(none)
+          +right-arrow-bevel(0px)
+          +absolute(2.8px, -12px)
+
+      & + li:hover
+
+        &:before
+          +right-arrow-inner-bevel(5px)
+          +absolute(3px, -12px)
+
+        &.active, &:last-child, &:active
+          &:before
+            +right-arrow-inner-bevel(2px)
+            +absolute(3px, -12px)
+
+    &:last-child
+      cursor: default
+      pointer-events: none
+      z-index: 1
+
+      +border-radius-right(3px)
+
+      +after
+        border: 0px solid transparent
+        border-top-color: $pad-border-color
+        border-right-color: $pad-border-color
+        z-index: -1
+        margin-left: -11px
+
+        +absolute(2.8px, 100%)
+        +right-arrow($pad-color, $pad-border-color)
+
+    &:hover
+      +bevel-x(5px)
+
+      &, span, a
+        background: $pad-hover-color
+
+      a
+        border-bottom: none
+
+      &:before
+        +right-arrow-inner-bevel(2px)
+
+
+      &:last-child, &.active, &:active
+        +bevel-x(2px)
+
+        &:not(:first-child):before
+          +right-arrow-bevel(2px)
+          +absolute(2px, -12px)
+
+        & + li:before
+          +right-arrow-inner-bevel(2px)
+
+        & + li.active:before, & + li:last-child:before, & + li:active:before
+          +right-arrow-bevel(2px)
+          +absolute(2px, -13px)
+
+
+      &:last-child:after, & + li:before
+        +right-arrow-background($pad-hover-color)
+
+      &:last-child
+        &:after
+          top: 3px
+          margin-left: -10.5px
+          +right-arrow-bevel(2px)
+
+      & + li
+        &:before
+          +right-arrow-bevel(2px)
+
+      & + li.active, & + li:last-child
+        &:before
+          +right-arrow-background($pad-hover-color)
+          +right-arrow-bevel(5px)
+          +absolute(1px, -12.5px)
+
+    &.home
+      +font-block(1.2, 1.2)
+
+      span, a
+        padding: 4px 8px
+
+        +webkit-only
+          padding: 5px 8px
+
+        i
+          color: white
+          +text-shadow(0 0 4px $pad-shadow-color)
+
+    @for $i from 1 through $colors-count
+      $name: nth($colors-name, $i)
+      $background: nth($colors-light, $i)
+      $border: nth($colors-medium, $i)
+
+      +colorized-with-right-arrow($background, $border, '.#{$name}')
+
+    +colorized-with-right-arrow($color-blue-light, $color-blue-medium, '.home')
+    +colorized-with-right-arrow($color-red-light, $color-red-medium, ':last-child')
+

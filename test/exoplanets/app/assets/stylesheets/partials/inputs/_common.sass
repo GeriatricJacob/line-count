@@ -1,0 +1,192 @@
+=for-types($types)
+  @each $type in $types
+    .input.#{$type}
+      @content
+
+%input-label
+  background: $pad-color
+  border: 0px solid $pad-border-color
+  padding: $fib-3 $fib-5
+  border-bottom-width: 4px
+  vertical-align: top
+  font-weight: 400
+  width: 136px
+  text-align: right
+  white-space: nowrap
+
+  +absolute(-5px)
+  +box-shadow(3px 3px 3px rgba(0,0,0,0.3))
+  +border-bottom-right-radius(8px)
+
+  @extend %button-font
+
+  +before
+    +absolute(1px, 100%)
+
+  +after
+    +absolute(100%, 0)
+
+  &:before, &:after
+    border: 0px solid $pad-border-color
+    border-top-width: 4px
+
+    +border-top-left-radius(6px 8px)
+    +box-shadow(-3px -3px 0px 3px $pad-color)
+    +box(10px, 10px)
+
+  &.required
+    padding-right: 27px
+
+    i
+      color: $color-red-light
+      right: $fib-5
+
+      +absolute(7px, inherit)
+      +text-shadow(0 1px 3px transparentize($color-blue-dark, 0.6))
+
+%input-background
+  border: 0px solid $pad-border-color
+
+  +inner-pad(4px)
+  +border-radius(6px, 8px)
+  +transition(background 0.3s)
+
+  +before
+    bottom: 0
+    right: 0
+    display: block
+    z-index: 0
+    background: $color-blue-dark
+
+    +transition(background 0.3s)
+    +box-shadow(inset 0 1px 4px rgba(0,0,0,0.7))
+    +absolute(0,0)
+    +border-radius(5px 5px 6px 6px, 3px 3px 8px 8px)
+
+%input-hint
+  display: block
+  float: left
+  background: $color-blue-light
+  max-width: 89%
+  padding: $fib-5 $fib-9
+  z-index: -1 !important
+  color: white
+  font-weight: 400
+  position: relative
+
+  +font-block(0.9, 1.3)
+  +border-radius(0 100px 100px 200px)
+  +text-shadow(0 0 5px transparentize($color-blue-dark, 0.5))
+
+  +before
+    background: $color-blue-light
+
+    +box(22px)
+    +absolute(-22px)
+
+  +after('\f059')
+    color: $pad-color
+    font-family: $font-awesome
+    right: 6px
+
+    +rem(margin-top, -1)
+    +font-block(2, 2)
+    +absolute(50%, inherit)
+
+
+.input
+  margin: $fib-6 0
+  position: relative
+  z-index: 2
+  clear: left
+
+  & + &
+    margin-top: $fib-6
+
+  &.disabled
+    +opacity(0.5)
+
+  .hint
+    @extend %input-hint
+
+[class^='pure-u-'] .input:first-child
+  margin-top: 0
+
+[class^='pure-u-'] .input:last-child
+  margin-bottom: 0
+
++for-types(string email number numeric integer file phone range password date datetime time text pwdcalc_simple)
+  @extend %input-background
+
+  &.focus
+
+    &:before
+      background: $color-blue-medium
+
+    input
+      color: $color-grey-3
+
+  & > *
+    position: relative
+    z-index: 2
+
+  label
+    @extend %input-label
+
+
+  input
+    color: $color-grey-5
+    background: transparent
+    border: 0
+    padding: $fib-7 $fib-7 0 $fib-7
+    outline: none
+    width: 100%
+    height: 81px
+
+    +transition(color 0.3s)
+    +text-shadow(0 1px 3px rgba(0,0,0,0.7))
+    +font-block(2, 3)
+
+    +placeholder
+      font-style: italic
+      color: $color-grey-7
+      +opacity(1)
+
+    &::-moz-focus-inner
+      outline: 0
+
+    &:focus
+      outline: 0
+
+  .error
+    border-width: 0
+    border-top-width: 1px
+    margin: 0
+
+    +border-top-right-radius(0)
+    +border-top-left-radius(0)
+
+  .small &, &.small
+    label
+
+    input
+      height: 32px
+      padding: $fib-4 $fib-5 $fib-4 $fib-11
+
+      +font-block(1, 1.2)
+
+    textarea
+      min-height: 100px
+      +font-block(1, 1.2)
+
+.small
+  .hint
+    padding-top: $fib-4
+    padding-bottom: $fib-4
+
+    +font-block(0.8, 1)
+
+    &:after
+      +rem(margin-top, -0.6)
+      +font-block(1.2, 1.2)
+

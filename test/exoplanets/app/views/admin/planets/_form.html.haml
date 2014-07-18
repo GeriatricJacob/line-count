@@ -1,0 +1,15 @@
+
+= simple_form_for resource, url: [:admin, resource] do |f|
+  %fieldset.inputs
+    .pure-g
+      .pure-u-1-2
+      .pure-u-1-2
+        = f.input :seed
+        = f.input :name
+
+    = f.fields_for :properties do |h|
+      .pure-g.small
+        .pure-u-1-2= h.input :name
+
+
+  = default_actions

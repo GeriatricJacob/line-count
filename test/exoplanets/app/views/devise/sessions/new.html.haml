@@ -1,0 +1,11 @@
+%h2 Sign in
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
+  %fieldset.inputs
+    = f.error_notification
+    = devise_error_messages!
+    = f.input :email, :autofocus => true
+    = f.input :password
+    = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+  = default_actions submit: 'actions.sign_in'.t, no_cancel: true, icon: 'icon-signin', class: 'large'
+
+= render "devise/shared/links"

@@ -1,0 +1,149 @@
+#navigation
+  background: darken($color-blue-very-dark, 5)
+  width: 100%
+
+  ul
+    width: 860px
+    margin: 0 0 0 -430px
+    padding: 0
+
+
+    +relative(0, 50%)
+
+  [class*='icon-']
+    color: white
+    +text-shadow($pad-shadow)
+
+  li
+    display: inline-block
+    padding: $fib-5 0
+    padding-left: 38px
+    padding-right: 8px
+
+    +relative
+
+    &.active
+      background: $color-blue-dark
+
+    a
+      color: $color-grey-6
+      font-size: 1.2rem
+
+      +transition(all 0.3s)
+
+      [class*='icon-']
+        color: $color-grey-6
+        font-size: 1rem
+        background: transparentize($color-blue-light, 0.5)
+        display: inline-block
+        text-align: center
+        padding: 4px 0px
+        width: 24px
+        height: 24px
+        margin-top: -12px
+
+        +absolute(50%, 8px)
+        +transition(all 0.3s)
+        +border-radius(50%)
+
+      &:hover
+        color: $color-grey-4
+        [class*='icon-']
+          color: $color-grey-4
+          background: $color-blue-light
+
+      &.active
+        color: $color-grey-5
+        [class*='icon-']
+          color: $color-grey-5
+          background: transparentize($color-blue-light, 0.2)
+
+        &:hover
+          color: $color-grey-3
+          [class*='icon-']
+            color: $color-grey-3
+            background: $color-blue-light
+
+      body[class*='admin-'] &:not(.blue)
+        [class*='icon-']
+          background: transparentize($color-red-light, 0.5)
+
+        &:hover [class*='icon-']
+          background: $color-red-light
+
+        &.active
+          color: $color-grey-5
+          [class*='icon-']
+            color: $color-grey-5
+            background: transparentize($color-red-light, 0.2)
+
+          &:hover
+            color: $color-grey-3
+            [class*='icon-']
+              color: $color-grey-3
+              background: $color-red-light
+
+
+      @for $i from 1 through $colors-count
+        $name: nth($colors-name, $i)
+        $background: nth($colors-light, $i)
+        // $border: nth($colors-medium, $i)
+
+        &.#{$name}
+          [class*='icon-']
+            background: transparentize($background, 0.5)
+
+          &:hover [class*='icon-']
+            background: $background
+
+          &.active
+            color: $color-grey-5
+            [class*='icon-']
+              color: $color-grey-5
+              background: transparentize($background, 0.2)
+
+            &:hover
+              color: $color-grey-3
+              [class*='icon-']
+                color: $color-grey-3
+                background: $background
+
+
+
+      // +button('a', 1px 2px 4px)
+      //   position: relative
+      //   width: 100%
+      //   padding-left: $fib-8
+
+      //   [class*='icon-']
+      //     margin-top: -0.75em
+      //     +absolute(50%, $fib-4)
+
+      //   +colorize-button($color-blue-light, $color-blue-medium)
+
+      //   body.admin &:not(.blue), &.red
+      //     +colorize-button($color-red-light, $color-red-medium)
+
+// @media (max-width: 1064px)
+//   #navigation
+//     width: auto
+//     margin: -$fib-5 -$fib-5
+//     float: none
+
+//     ul
+//       padding: 0
+//       margin: 0
+
+//     &:after
+//       content: none
+
+//     li.separator
+//       display: inline-block
+
+//     li:not(.separator)
+//       margin: 0
+//       display: inline-block
+//       width: auto
+
+//       a
+//         width: auto

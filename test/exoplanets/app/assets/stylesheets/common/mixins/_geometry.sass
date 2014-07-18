@@ -1,0 +1,141 @@
+// Borders Radii
+
+=border-radius-left($amount-x: 0px, $amount-y: $amount-x, $others-x: 0, $others-y: $others-x)
+  +border-radius($amount-x $others-x $others-x $amount-x, $amount-y $others-y $others-y $amount-y)
+
+=border-radius-right($amount-x: 0px, $amount-y: $amount-x, $others-x: 0, $others-y: $others-x)
+  +border-radius($others-x $amount-x $amount-x $others-x, $others-y $amount-y $amount-y $others-y)
+
+=border-radius-top($amount-x: 0px, $amount-y: $amount-x, $others-x: 0, $others-y: $others-x)
+  +border-radius($amount-x $amount-x $others-x $others-x, $amount-y $amount-y $others-y $others-y)
+
+=border-radius-bottom($amount-x: 0px, $amount-y: $amount-x, $others-x: 0, $others-y: $others-x)
+  +border-radius($others-x $others-x $amount-x $amount-x, $others-y $others-y $amount-y $amount-y)
+
+// Bevels
+
+=bevel-x($amount: 4px, $others: 1px)
+  border-top-width: $others
+  border-bottom-width: $amount
+  margin-top: -$amount
+
+=inner-bevel-x($amount: 4px, $others: 1px)
+  border-bottom-width: $others
+  border-top-width: $amount
+
+=bevel-y($others: 1px)
+  border-left-width: $others
+  border-right-width: $others
+
+=bevel($amount: 4px, $others: 1px)
+  +bevel-x($amount, $others)
+  +bevel-y($others)
+
+// Geometries
+
+=pad($bevel: 2px, $base-margin: 0px)
+  border-bottom-width: $bevel
+  margin-top: $base-margin - $bevel
+
+=inner-pad($bevel: 2px)
+  border-top-width: $bevel
+
+=hover-pad($bevel-steps: 2px 4px 6px)
+  $max-bevel: nth($bevel-steps, 2)
+
+  +pad(nth($bevel-steps, 2), $max-bevel)
+
+  &:not(:disabled):not(.disabled)
+    &:hover, &.up
+      +pad(nth($bevel-steps, 3), $max-bevel)
+
+    &:active, &.down
+      +pad(nth($bevel-steps, 1), $max-bevel)
+
+
+=diamond($size, $rounded: false)
+  +box($size, $size)
+  +transform(rotate(45deg))
+
+  @if $rounded
+    +border-radius($rounded)
+
+// :::> Arrow
+
+=right-arrow($background: $btn-color, $border: $btn-border-color, $bevel: 0px)
+  border-top-color: $border
+  border-right-color: $border
+
+  +diamond(21.5px)
+  +right-arrow-bevel($bevel)
+  +right-arrow-background($background)
+
+=right-arrow-background($background)
+  +background(linear-gradient(top right, $background 0%, $background 51%, transparentize($background, 1) 52%, transparentize($background, 1) 100%))
+
+=right-arrow-bevel($bevel: 0px)
+  border-top-width: 1px
+  border-right-width: 1px + $bevel
+
+  +border-top-right-radius(3px + $bevel)
+  +border-top-left-radius(3px)
+  +border-bottom-right-radius(0px)
+
+=right-arrow-inner-bevel($bevel: 0px)
+  border-right-width: 1px
+  border-top-width: 1px + $bevel
+
+  +border-top-right-radius(3px + $bevel)
+  +border-top-left-radius(0px)
+  +border-bottom-right-radius(3px)
+
+=colorized-with-right-arrow($background, $border, $classes...)
+  @each $class in $classes
+    &#{$class}
+      border-top-color: $background
+      border-bottom-color: $border
+
+      &:after
+        border-top-color: $background
+        border-right-color: $border
+        +right-arrow-background($background)
+
+      &:first-child
+        border-left-color: $border
+
+      &, span, a
+        background: $background
+
+      & + li:not(:first-child):before
+        +right-arrow-background($background)
+
+      &:not(:last-child):not(:active):not(.active) + li:not(:hover)
+        &:before
+          border-top-color: $border
+          border-right-color: $border
+
+      & + li.active, & + li:active, & + li:last-child
+        &:before
+          border-top-color: $border
+          border-right-color: $border
+
+      &:hover
+        &, span, a
+          background: lighten(saturate($background, 5), 15)
+
+        &:after
+          +right-arrow-background(lighten(saturate($background, 5), 15))
+
+        &:not(:last-child):not(.active):not(:active):before
+          border-top-color: $border
+          border-right-color: $border
+
+        & + li
+          &:before
+            +right-arrow-background(lighten(saturate($background, 5), 15))
+
+    &:active, &.active, &:last-child
+      & + li#{$class}:not(:active):not(.active):not(:last-child)
+        &:before
+          border-top-color: $border
+          border-right-color: $border

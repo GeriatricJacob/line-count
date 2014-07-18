@@ -1,0 +1,44 @@
+- content_for :head do
+  = javascript_include_tag "jquery.YAPSM.min", "jquery.pwdcalc"
+
+- breadcrumb 'Styles'
+
+- content_for :before_content do
+  = breadcrumbs
+
+- content_for :content_header do
+  = render partial: 'pills'
+
+- content_for :messages do
+  .notice Signed in successfully
+  .error Can't do that
+
+%h2 Cards
+= render partial: 'cards'
+
+%hr
+
+%h2 Lists
+= render partial: 'lists'
+
+%hr
+
+%h2 Forms
+
+= render partial: 'user_form'
+.small= render partial: 'user_form'
+
+= render partial: 'forms'
+.small= render partial: 'forms', locals: {prefix: 'small_'}
+
+%hr
+
+%h2 Breadcrumb
+= render partial: 'breadcrumb'
+
+%hr
+
+%h2 Button
+= render partial: 'buttons'
+
+%hr

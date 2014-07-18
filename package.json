@@ -1,7 +1,7 @@
 {
   "name": "line-count",
   "main": "./lib/line-count",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Show line counts for files in projects",
   "activationEvents": ["line-count:open"],
   "repository": "https://github.com/mark-hahn/line-count",
@@ -10,6 +10,7 @@
     "atom": ">0.50.0"
   },
   "dependencies": {
+    "moment": ">=2.7.0",
     "sloc": ">=0.0.8",
     "filewalker": ">=0.1.2"
   }

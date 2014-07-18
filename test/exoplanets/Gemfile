@@ -1,0 +1,92 @@
+source 'https://rubygems.org'
+ruby '2.0.0'
+
+gem 'rails', '4.0.0'
+gem 'turbolinks'
+gem 'jbuilder', '~> 1.2'
+gem 'figaro'
+gem 'pg'
+gem 'unicorn'
+gem 'pry-rails'
+
+# Users/Rights
+gem 'devise'
+gem 'cancan'
+gem 'rolify'
+gem 'pwdcalc'
+
+# Traffic
+gem 'customs'
+
+# Models
+gem 'enumerize'
+gem 'seed-fu'
+gem 'kaminari'
+
+# S3
+gem 'carrierwave'
+gem 'carrierwave-meta'
+gem 'aws-sdk'
+gem 'fog'
+
+# Graphics
+gem 'rmagick'
+gem 'perlin'
+
+# Delayed Jobs
+gem 'delayed_job'
+gem 'delayed_job_active_record'
+
+# HTML
+gem 'haml-rails'
+gem 'simple_form', '>= 3.0.0.rc'
+
+# Assets
+gem 'jquery-rails'
+
+group :development do
+  # Errors
+  gem 'better_errors'
+  gem 'binding_of_caller', platforms: [:mri_19, :mri_20, :rbx]
+
+  # Assets
+  gem 'html2haml'
+  gem 'quiet_assets'
+
+  # Guard
+  gem 'guard-bundler'
+  gem 'guard-rails'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'guard-livereload'
+
+  # Spork
+  gem 'spork-rails', github: 'sporkrb/spork-rails'
+
+  # Notification
+  gem 'rb-fchange', require: false
+  gem 'rb-fsevent', require: false
+  gem 'rb-inotify', require: false
+end
+
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'email_spec'
+  gem 'shoulda-matchers'
+  gem 'faker'
+  gem 'nyan-cat-formatter'
+end
+
+group :assets do
+  gem 'coffee-rails', '~> 4.0.0'
+  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails', '~> 4.0.0'
+  gem 'compass-rails', github: 'milgner/compass-rails', ref: '1749c06f15dc4b058427e7969810457213647fb8'
+  gem 'purecss-rails'
+end

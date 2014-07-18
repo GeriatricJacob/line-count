@@ -1,0 +1,8 @@
+= render partial: 'list_item_actions_extra', locals: {item: item}
+
+= link_to controller.resource_path_for(item, :edit) do
+  .icon-pencil
+  = 'admin.actions.edit'.t
+= link_to controller.resource_path_for(item, :destroy), method: :delete, class: 'red' do
+  .icon-remove
+  = 'admin.actions.destroy'.t

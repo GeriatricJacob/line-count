@@ -1,0 +1,64 @@
++for-types(file)
+  input
+    z-index: 3
+
+    +opacity(0)
+
+  .preview
+    position: static
+
+    img
+      right: 0
+      height: 100%
+      width: auto
+
+      +absolute(0,inherit)
+
+    .label
+      color: $color-grey-5
+      background: transparent
+      border: 0
+      padding: $fib-7 + 4px $fib-7 0 $fib-7
+      outline: none
+      width: 100%
+
+      +absolute
+      +transition(color 0.3s)
+      +text-shadow(0 1px 3px rgba(0,0,0,0.7))
+      +font-block(2, 3)
+
+      &.placeholder
+        font-style: italic
+        color: $color-grey-7
+
+    .meta
+      text-align: left
+      color: $color-grey-6
+
+      +absolute($fib-4, $fib-11)
+
+      & > *
+        display: inline
+
+        &:last-child:before
+          content: ', '
+
+      .number
+        color: $color-blue-light
+
+  .small &, &.small
+    .label
+      height: 32px
+      padding: $fib-4 $fib-4 $fib-3 $fib-11
+
+      +font-block(1, 1.2)
+
+    .meta
+      right: 32px + $fib-6
+      +absolute(5px, inherit)
+
+      div
+        display: inline-block
+
+        & + div
+          +before(', ')

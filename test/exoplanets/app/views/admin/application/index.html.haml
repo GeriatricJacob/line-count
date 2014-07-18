@@ -1,0 +1,13 @@
+- icon_new = '<i class="icon-plus"></i>'.html_safe
+
+- pill icon_new + 'admin.actions.create'.t, controller.resource_path(:new), class: 'green' if can? :create, resource_class
+
+- breadcrumb resource_class.model_name.human.pluralize(I18n.locale)
+
+- content_for :before_content do
+  = breadcrumbs
+
+- content_for :content_header do
+  = pills
+
+= collection resource_collection

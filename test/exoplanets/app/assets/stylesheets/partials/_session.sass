@@ -1,0 +1,79 @@
+
+#session
+  .fn
+    color: $color-grey-6
+
+  .roles
+    margin-top: 2px
+    margin-bottom: 8px
+
+  .email, .message
+    margin-bottom: 8px
+    color: $color-grey-8
+
+  .avatar
+    float: right
+    margin-left: 8px
+    margin-top: 3px
+
+    figure
+      cursor: pointer
+      position: relative
+      background: $color-grey-9
+      border: 1px solid $color-grey-8
+      font-size: $avatar-size
+      line-height: $avatar-size
+      text-align: center
+      overflow: hidden
+
+      +transition(all 0.3s)
+      +box($avatar-size, $avatar-size)
+      +border-radius(8px)
+
+      &:before
+        content: "\f007"
+        font-family: $font-awesome
+        z-index: 1
+
+        +absolute
+        +box(100%, 100%)
+
+      &:hover
+        color: $color-grey-7
+        border-color: $color-grey-7
+        background: $color-grey-8
+
+      img
+        position: relative
+        z-index: 2
+
+.item.user
+  padding-left: 50px + $fib-6
+  .avatar
+    +absolute($fib-5)
+
+    figure
+      position: relative
+      background: $color-grey-2
+      color: $color-grey-5
+      border: 1px solid $color-grey-5
+      font-size: $avatar-small-size
+      line-height: $avatar-small-size
+      text-align: center
+      overflow: hidden
+
+      +transition(all 0.3s)
+      +box($avatar-small-size, $avatar-small-size)
+      +border-radius(8px)
+
+      &:before
+        content: "\f007"
+        font-family: $font-awesome
+        z-index: 1
+
+        +absolute
+        +box(100%, 100%)
+
+      img
+        position: relative
+        z-index: 2

@@ -1,0 +1,44 @@
+
+=for-small-phone()
+  @media (max-width: $breakpoint-phone)
+    @content
+
+=for-phone()
+  @media (max-width: $breakpoint-tablet-1)
+    @content
+
+=for-tablet()
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop-1)
+    @content
+
+=for-small-desktop()
+  @media (min-width: $breakpoint-desktop) and (max-width: $breakpoint-large-1)
+    @content
+
+=for-large-desktop()
+  @media (min-width: $breakpoint-large)
+    @content
+
+=for-desktop()
+  @media (min-width: $breakpoint-desktop)
+    @content
+
+=upto-tablet()
+  @media (max-width: $breakpoint-desktop-1)
+    @content
+
+=upto-small-desktop()
+  @media (max-width: $breakpoint-large-1)
+    @content
+
+=downfrom-tablet()
+  @media (min-width: $breakpoint-tablet)
+    @content
+
+=webkit-only()
+  @media screen and (-webkit-min-device-pixel-ratio:0)
+    @content
+
+=gecko-only()
+  @-moz-document url-prefix()
+    @content

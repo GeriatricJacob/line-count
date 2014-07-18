@@ -1,0 +1,111 @@
+
+en:
+  no_data: 'No entries yet, click on New to start creating one'
+
+  actions: &actions
+    sign_in: Sign in
+    sign_out: Sign out
+    sign_up: Sign up
+
+    create: New
+    destroy: Remove
+    edit: Edit
+    update: Save
+    cancel: Cancel
+    submit: Submit
+
+  time: &time
+    formats:
+      default: '%Y-%m-%d %H:%M:%S'
+      short: '%H:%M'
+
+  date: &date
+    formats:
+      default: '%Y-%m-%d'
+
+  timestamps: &timestamps
+    updated_at: Last update
+    created_at: Created at
+
+  models: &models
+    users: Users
+    planets: Planets
+    styles: Styles
+
+  links: &links
+    home: Home
+    <<: *models
+
+  session:
+    anonymous: Anonymous
+    message: Sign in with your account or sign up.
+
+  admin:
+    no_data: 'No entries yet, click on New to start creating one'
+
+    links:
+      home: Admin
+      <<: *models
+
+    actions:
+      <<: *actions
+
+    tables:
+      columns:
+        id: '#'
+        last_update: Last Update
+        actions: Actions
+
+    breadcrumbs:
+      home: Home
+
+  simple_form:
+    yes: 'Yes'
+    no: 'No'
+    required:
+      html: '<i title="required" class="icon-asterisk"></i>'
+    error_notification:
+      default_message: "Please review the problems below:"
+
+    placeholders:
+      types: &types
+        none: ''
+        string: ''
+        boolean: false
+        email: email@company.com
+        number: 0
+        file: Browse for file
+
+      identity: &identity
+        first_name: John
+        last_name: Doe
+        email: john.doe@company.com
+        password: password
+        password_confirmation: password
+
+      <<: *identity
+      <<: *types
+
+      user:
+        <<: *identity
+
+      session:
+        <<: *identity
+
+      registration:
+        <<: *identity
+
+    labels:
+      user:
+        <<: *timestamps
+
+        password_confirmation: Confirmation
+
+  views:
+    pagination:
+      previous: Previous
+      first: First
+      last: Last
+      next: Next
+      truncate: "..."
+

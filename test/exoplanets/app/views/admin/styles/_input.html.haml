@@ -1,0 +1,32 @@
+- prefix ||= ''
+- id ||= "#{prefix}input_#{name.parameterize}#{rand(1000)}"
+- value ||= nil
+- type ||= 'text'
+- name ||= type.capitalize
+- placeholder ||= name.capitalize
+- has_error ||= false
+- hint ||= nil
+- attrs ||= {}
+- disabled = attrs[:disabled]
+- readonly = attrs[:readonly]
+- cls = attrs[:class]
+
+- options = {id: id ,type: type, placeholder: placeholder, value: value}.merge attrs
+
+.input{class: "#{type} #{name.parameterize} #{readonly ? 'readonly' : ''} #{disabled ? 'disabled' : ''} #{has_error ? 'field_with_errors' : ''} #{hint ? 'field_with_hint' : ''} #{cls}"}
+  - if %w(checkbox radio).include? type
+    %input{options}
+    %label{for: id}= name
+
+  - else
+    %label{for: id}= name
+    %input{options}
+    - if type == :range
+      %output{for: id, name: name}
+
+  - if has_error
+    %span.error Can't be blank
+
+  - if hint
+    %span.hint= hint
+

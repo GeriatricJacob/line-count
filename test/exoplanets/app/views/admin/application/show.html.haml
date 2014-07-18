@@ -1,0 +1,17 @@
+- icon_remove = '<i class="icon-remove"></i>'.html_safe
+
+- pill 'admin.actions.edit'.t, controller.resource_path(:edit) if can? :edit, resource
+
+- pill icon_remove + 'admin.actions.destroy'.t, controller.resource_path(:destroy), method: :delete, confirm: 'confirm.default'.t, class: 'red' if can? :delete, resource
+
+- breadcrumb resource_class.model_name.human.pluralize(I18n.locale), controller.resource_path(:index)
+- breadcrumb resource_label
+
+
+- content_for :before_content do
+  = breadcrumbs
+
+- content_for :content_header do
+  = pills
+
+= render 'show'

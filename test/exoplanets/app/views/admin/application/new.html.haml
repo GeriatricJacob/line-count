@@ -1,0 +1,8 @@
+- breadcrumb resource_class.model_name.human.pluralize(I18n.locale), controller.resource_location(:index)
+- breadcrumb 'admin.actions.create'.t
+
+
+- content_for :before_content do
+  = breadcrumbs
+
+= render 'form'

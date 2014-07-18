@@ -1,0 +1,67 @@
+
+- prefix ||= ''
+
+= simple_form_for current_user, url: '/', method: :get do |f|
+  %fieldset.inputs
+    = f.input :email
+    .pure-g
+      .pure-u-1-2= f.input :first_name
+      .pure-u-1-2= f.input :last_name
+
+    = f.input :avatar
+
+    = f.input :created_at
+    = f.input :updated_at, wrapper_html: { class: 'disabled' }, input_html: { disabled: true }
+
+    .pure-g
+      .pure-u-1-2= render partial: 'input', locals: { type: :number, prefix: prefix, name: 'size', value: '1.90', hint: 'This is a hint long enougth to go past the limit in a two columns row.'}
+      .pure-u-1-2= render partial: 'input', locals: { type: :range, prefix: prefix, name: 'weight', value: 75, attrs: { 'min-value' => 0, 'max-value' => 100 } }
+
+    = render partial: 'input', locals: { type: :range, prefix: prefix, name: 'weight', value: 75, attrs: { 'min-value' => 0, 'max-value' => 100 } }
+    = render partial: 'select', locals: { name: 'Long Single' }
+
+    .pure-g
+      .pure-u-1-2= render partial: 'select', locals: { name: 'Short Single', required: true }
+      .pure-u-1-2= render partial: 'select', locals: { name: 'Short Multi', attrs: { multiple: true }, required: true }
+
+    = render partial: 'select', locals: { name: 'Long Multi', attrs: { multiple: true } }
+
+    .pure-g
+      .pure-u-1-2
+        - 4.times do |i|
+          = render partial: 'input', locals: { type: 'checkbox', attrs: { checked: i % 2 == 1, disabled: i == 2}, has_error: i == 3, id: "#{prefix}checkbox#{i}", hint: i == 0 ?  'This is a shorter hint' : nil }
+      .pure-u-1-2
+        - 4.times do |i|
+          = render partial: 'input', locals: { type: 'radio', attrs: { name: "input_radio#{i / 2}", checked: i % 2 == 1, disabled: i == 2}, has_error: i == 3, id: "#{prefix}radio#{i}", hint: i == 0 ?  'This is a shorter hint' : nil }
+
+    = render partial: 'input', locals: { type: :text, prefix: prefix, name: 'Normal', has_error: true }
+    .pure-g
+      .pure-u-1-2= render partial: 'input', locals: { type: :text, prefix: prefix, name: 'Readonly', attrs: {readonly: true } }
+      .pure-u-1-2= render partial: 'input', locals: { type: :text, prefix: prefix, name: 'Disabled', attrs: {disabled: true } }
+
+    .pure-g
+      .pure-u-1-2
+        .input.text.field_with_errors.field_with_hint
+          %label{for: '#textarea'} Some text
+          %textarea#textarea Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it?
+
+          .error Can't contains weird aliens
+          .hint No?
+
+      .pure-u-1-2
+        .input.text.disabled
+          %label{for: '#textarea'} Some text
+          %textarea#textarea{disabled: true} Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it?
+
+  %fieldset.actions
+    %button.button
+      .icon-eraser
+      Reset
+
+    %button.button.red
+      .icon-remove
+      Cancel
+
+    %button.button.green
+      .icon-ok
+      Submit

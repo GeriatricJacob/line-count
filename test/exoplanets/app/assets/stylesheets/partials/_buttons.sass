@@ -1,0 +1,196 @@
+%button-font-style
+  text-transform: uppercase
+  color: $pad-text-color
+
+%button-font
+  +font-block(0.8, 1.2)
+
+  @extend %button-font-style
+
+%button-font-very-small
+  +font-block(0.55, 0.7)
+  @extend %button-font-style
+
+%button-font-small
+  +font-block(0.7, 1.1)
+  @extend %button-font-style
+
+%button-font-large
+  +font-block(1.2, 1.6)
+  @extend %button-font-style
+
+%button-font-very-large
+  +font-block(2, 2.4)
+  @extend %button-font-style
+
+%button-padding
+  padding: 5px 13px
+
+%button-padding-very-small
+  padding: 2px 5px
+
+%button-padding-small
+  padding: 3px 8px
+
+%button-padding-large
+  padding: 8px 21px
+
+%button-padding-very-large
+  padding: 13px 34px
+
+=button($selector: '&', $bevel-steps: 2px 4px 6px)
+  #{$selector}
+    border-width: 0px
+    border-style: solid
+    margin: 0
+    cursor: pointer
+    letter-spacing: normal
+    display: inline-block
+    vertical-align: top
+
+    +hover-pad($bevel-steps)
+    +border-radius(6px, 8px)
+    +transition(color 0.3s, background-color 0.3s, border-color 0.3s)
+    +box-shadow($pad-shadow)
+
+    @extend %button-padding
+    @extend %button-font
+
+    [class^='icon-']
+      margin-right: $fib-5
+      color: white
+
+      +text-shadow(0 0 2px transparentize($color-blue-very-dark, 0.5))
+
+    @content
+
+=very-small-button()
+  +hover-pad(1px 2px 3px)
+  +border-radius(3px, 4px)
+  +transition(none)
+
+  @extend %button-font-very-small
+  @extend %button-padding-very-small
+
+  [class^='icon-']
+    margin-right: $fib-3
+
+=small-button()
+  +hover-pad(1px 2px 4px)
+  +border-radius(4px, 5px)
+
+  @extend %button-font-small
+  @extend %button-padding-small
+
+  [class^='icon-']
+    margin-right: $fib-3
+
+=large-button()
+  +border-radius(8px, 11px)
+
+  @extend %button-font-large
+  @extend %button-padding-large
+
+  [class^='icon-']
+    margin-right: $fib-6
+
+=very-large-button()
+  +hover-pad(3px 6px 9px)
+  +border-radius(8px, 11px)
+
+  @extend %button-font-very-large
+  @extend %button-padding-very-large
+
+  [class^='icon-']
+    margin-right: $fib-7
+
+=polymorphic-button($selector: '&', $bevel-steps: 2px 4px 6px)
+  +button($selector, $bevel-steps)
+    &.very-small
+      +very-small-button
+
+    &.small
+      +small-button
+
+    &.large
+      +large-button
+
+    &.very-large
+      +very-large-button
+
+    @content
+
+=fixed-height-button($bevel-steps: 2px 4px 6px)
+
+
+=colorize-button($background, $border)
+  background: $background
+  border-color: $border
+  color: $pad-text-color
+
+  [class*='icon-']
+    background: transparentize($color-blue-dark, 0.7)
+    text-align: center
+    line-height: 1.6em
+    color: white
+
+    +inline-box(1.6em)
+    +border-radius(50%)
+    +box-shadow(inset 0 1px 2px transparentize($color-blue-dark, 0.5))
+
+
+  &:not(:disabled)
+    &:hover, &.up
+      background: hover-color($background)
+      border-color: $border
+
+
+=colorized-button($before: '&', $after: '', $separator: '.')
+  #{$before}#{$after}
+    +colorize-button($pad-color, $pad-border-color)
+
+    &:disabled
+      +opacity(0.5)
+
+  @for $i from 1 through $colors-count
+    $name: nth($colors-name, $i)
+    $background: nth($colors-light, $i)
+    $border: nth($colors-medium, $i)
+
+    #{$before}#{$separator}#{$name}#{$after}
+      +colorize-button($background, $border)
+
+=button-container()
+  height: 29px
+
+=button-group($before: '&', $after: '', $radius-x: 6px, $radius-y: 8px)
+  #{$before}
+    position: relative
+    z-index: 1
+
+  #{$before}:hover
+    z-index: 3
+
+  #{$before}:hover#{$after}
+    +box-shadow(0px 1px 2px rgba(0,0,0,0.3))
+
+  #{$before}:not(:last-child)#{$after}
+    border-right-width: 0
+    +border-top-right-radius(0)
+    +border-bottom-right-radius(0)
+
+  #{$before}:not(:first-child)#{$after}
+    +border-top-left-radius(0)
+    +border-bottom-left-radius(0)
+
+
+.button, button
+  +polymorphic-button
+  +colorized-button
+
+input[type=submit]
+  +polymorphic-button
+  +colorize-button($color-green-light, $color-green-medium)
+
+  &:disabled
+    +opacity(0.5)

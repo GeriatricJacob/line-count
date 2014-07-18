@@ -1,0 +1,9 @@
+%nav#navigation
+  %ul
+    = nav_link for: :home, icon: :home, url: root_path, class: 'blue'
+    = nav_link for: :home, icon: :home, admin: true, url: admin_root_path, class: 'red'
+
+    = nav_link for: :users, icon: :user, admin: true
+    = nav_link for: :planets, icon: :globe, admin: true
+    = nav_link for: :styles, icon: :tint, admin: true
+

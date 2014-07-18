@@ -1,0 +1,8 @@
+- resource_name = resource_class.model_name.human.pluralize(I18n.locale)
+
+.collection{class: resource_name.underscore}
+  %table
+    %thead= render partial: 'list_header', locals: {resource_name: resource_name}
+    %tbody
+      - collection.each do |item|
+        %tr= render partial: 'list_row', locals: {item: item}

@@ -1,0 +1,38 @@
+%nav#session.vcard
+
+  - if user_signed_in?
+    .avatar
+      %figure
+        - if current_user.avatar.present?
+          = image_tag current_user.avatar.thumb
+
+    - if current_user.name.present?
+      .fn= current_user.name
+
+    = link_to current_user.email, admin_user_path(current_user), class: 'email'
+
+    - unless current_user.roles.empty?
+      .roles
+        - if current_user.has_role :admin
+          .badge.admin admin
+        - if current_user.has_role :superuser
+          .badge.superuser superuser
+
+    = link_to destroy_user_session_path, class: 'button very-small red', method: :delete do
+      .icon-off
+      = t('actions.sign_out')
+
+  - else
+    .avatar
+      %figure
+
+    .fn= 'session.anonymous'.t
+    .message= 'session.message'.t
+
+    = link_to new_user_session_path, class: 'button small blue' do
+      .icon-signin
+      = 'actions.sign_in'.t
+
+    = link_to new_user_registration_path, class: 'button small green' do
+      .icon-off
+      = 'actions.sign_up'.t

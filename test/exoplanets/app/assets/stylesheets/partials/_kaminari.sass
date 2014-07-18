@@ -1,0 +1,103 @@
+
+.pagination
+  position: relative
+  display: inline-block
+
+
+  .buttons
+    display: block
+    height: 18px
+    padding-right: 4px
+
+    +char-collapse
+    +box-shadow($pad-shadow)
+    +border-radius(3px, 4px)
+
+  .buttons > *
+    +button
+      +box-shadow(none)
+      +colorized-button
+      +button-group
+      +very-small-button
+
+    &:not(.current)
+      padding: 0
+
+      a
+        display: block
+        margin: 0
+
+        @extend %button-padding-very-small
+        @extend %button-font-very-small
+
+      &:not(.page)
+        +colorize-button($color-blue-light, $color-blue-medium)
+
+
+    &.current
+      padding-bottom: $fib-2 + 1
+      pointer-events: none
+      font-weight: bold
+
+      +text-shadow($pad-shadow)
+      +colorize-button($color-red-light, $color-red-medium)
+      color: $pad-color
+
+
+  a
+    color: $pad-text-color
+
+    &:hover
+      border-color: transparent
+
+// top pagination
+#content-header + .pagination
+  background: $color-blue-medium
+  padding: $fib-5 $fib-5 $fib-6
+  margin-bottom: -$fib-6
+  border-top: 4px solid $pad-border-color
+
+  +border-top-left-radius($pad-border-radius-x $pad-border-radius-y)
+  +border-top-right-radius($pad-border-radius-x $pad-border-radius-y)
+  +box-shadow(inset 5px 5px 4px -5px $pad-shadow-color)
+
+  +before
+    background: $color-blue-medium
+    bottom: 0
+
+    +absolute(inherit, 100%)
+    +box(10px, 30px)
+
+  +after
+    background: $pad-color
+    bottom: 7px
+    border-bottom: 4px solid $pad-border-color
+
+    +border-bottom-left-radius($pad-border-radius-x $pad-border-radius-y)
+    +absolute(inherit, 100%)
+    +box(20px)
+    +box-shadow(-4px 6px 5px -4px $pad-shadow-color)
+
+// bottom pagination
+.collection + .pagination
+  background: $pad-color
+  padding: $fib-6 $fib-5 $fib-5
+  margin-top: -$fib-5
+
+  +border-bottom-left-radius($pad-border-radius-x $pad-border-radius-y)
+  +border-bottom-right-radius($pad-border-radius-x $pad-border-radius-y)
+  +box-shadow(inset 3px -2px 4px -3px $pad-shadow-color)
+
+  +before
+    background: $pad-color
+
+    +absolute(0, 100%)
+    +box(10px, 30px)
+
+  +after
+    background: $pad-color
+
+    +border-top-left-radius($pad-border-radius-x $pad-border-radius-y)
+    +absolute(8px, 100%)
+    +box(20px, 33px)
+    +box-shadow(-2px -2px 5px -4px $pad-shadow-color)

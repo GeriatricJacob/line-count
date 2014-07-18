@@ -1,0 +1,73 @@
++for-types(range)
+  height: 85px
+
+  +after
+    display: block
+    background: $pad-color
+    border: 0px solid $pad-border-color
+    margin-left: $fib-11
+    margin-right: $fib-4
+    margin-top: -48px
+    height: 13px
+    position: relative
+    z-index: 1
+
+    border-bottom-width: 2px
+
+    +box-shadow(0 1px 3px rgba(0,0,0,0.5))
+    +border-radius(3px)
+    +box-sizing(border-box)
+    +webkit-only
+      margin-top: -36px
+
+  input
+    padding: 0
+    padding-left: $fib-11
+    padding-right: $fib-4
+    margin-top: -4px
+
+    +range-track
+      background: transparent
+      border: none
+
+      +box(100%, 64px)
+
+    +range-thumb
+      border: 0px solid $pad-border-color
+      background: $pad-color
+
+      +box(50px, 50px)
+      +border-radius(50%)
+      +box-sizing(border-box)
+      +box-shadow(0 4px 0 $pad-border-color, 0 4px 3px rgba(0,0,0,0.5))
+
+      +webkit-only
+        margin-top: 0px
+
+  output
+    color: $color-grey-5
+    // font-weight: 500
+
+    +font-block(2, 2)
+    +absolute($fib-8, $fib-7)
+
+  .small &, &.small
+    height: 36px
+
+    &:after
+      margin-left: $fib-11 + $fib-9
+      border-bottom-width: 1px
+      height: 6px
+      margin-top: -24px
+
+    input
+      height: 36px
+      padding-left: $fib-11 + $fib-9
+
+      +range-thumb
+        +box-shadow(0 2px 0 $pad-border-color, 0 2px 3px rgba(0,0,0,0.5))
+        +box(24px, 24px)
+
+    output
+      +absolute($fib-4, $fib-11)
+      +font-block(1.2, 1.3)

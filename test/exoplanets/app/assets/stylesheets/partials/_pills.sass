@@ -1,0 +1,36 @@
+.pills
+  margin: 0
+  background: $pad-border-color
+  position: relative
+
+  +button-container
+  +border-radius($pad-border-radius-x, $pad-border-radius-y)
+  +box-shadow($pad-shadow)
+  +inline-list
+
+  li
+    position: relative
+    z-index: 1
+
+    +button('& > *', 1px 2px 4px)
+      display: block
+      +box-shadow(none)
+
+      &:hover
+        +box-shadow(0px 2px 3px rgba(0,0,0,0.5))
+
+    +colorized-button('&', ' > *')
+    +button-group('&', ' > *')
+
+    &:hover
+      z-index: 3
+
+    &:first-child > *
+      +border-radius-left($pad-border-radius-x, $pad-border-radius-y)
+
+    &:last-child > *
+      +border-radius-right($pad-border-radius-x, $pad-border-radius-y)
+
+    &:first-child:last-child > *
+      +border-radius($pad-border-radius-x, $pad-border-radius-y)
+

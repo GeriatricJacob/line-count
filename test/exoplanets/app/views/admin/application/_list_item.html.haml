@@ -1,0 +1,14 @@
+.item{class: item.class.name.underscore}
+  %span.name= link_to resource_label_for(item), controller.resource_path_for(item, :show)
+  .times
+    - if item.respond_to? :created_at
+      .time
+        %span.label= "simple_form.labels.#{item.class.name.underscore}.created_at".t
+        %time.created_at= item.created_at.l
+
+    - if item.respond_to? :updated_at
+      .time
+        %span.label= "simple_form.labels.#{item.class.name.underscore}.updated_at".t
+        %time.updated_at= item.updated_at.l
+
+  = render partial: 'list_item_details', locals: {item: item}

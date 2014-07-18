@@ -1,0 +1,32 @@
+- prefix ||= ''
+- id ||= "#{prefix}input_#{name.parameterize}"
+- name ||= type.capitalize
+- placeholder ||= name.capitalize
+- has_error ||= false
+- type ||= 'select'
+- hint ||= nil
+- required ||= false
+- attrs ||= {}
+- disabled = attrs[:disabled]
+- readonly = attrs[:readonly]
+- cls = attrs[:class]
+
+- require 'faker'
+
+- options = {id: id , placeholder: placeholder}.merge attrs
+
+.input{class: "#{type} #{name.parameterize} #{readonly ? 'readonly' : ''} #{disabled ? 'disabled' : ''} #{has_error ? 'field_with_errors' : ''} #{hint ? 'field_with_hint' : ''} #{cls}"}
+  %label{for: id, class: required ? 'required' : ''}
+    - if required
+      %i.icon-asterisk
+    = name
+  %select{options}
+    - 10.times do |i|
+      %option{value: i}= Faker::Lorem.words(3).join(' ').capitalize
+
+  - if has_error
+    %span.error Can't be blank
+
+  - if hint
+    %span.hint= hint
+

@@ -1,0 +1,84 @@
+=ul-bullet()
+  border-bottom: 2px solid $color-grey-6
+  background: $color-grey-5
+
+  +border-radius(50% 50% 0 50%)
+  +box-shadow(0 1px 3px $color-grey-8)
+  +box(20px, 20px)
+
+=ol-bullet()
+  border-bottom: 2px solid $color-grey-6
+  background: $color-grey-5
+
+  +border-radius(50% 50% 0 50%)
+  +box-shadow(0 1px 3px $color-grey-8)
+
+
+.ordered-list, .unordered-list
+  padding: 0
+  margin: $fib-6 $fib-5
+
+  +font-block(1.6, 2.6)
+
+  li
+    list-style: none
+    counter-increment: items
+    position: relative
+
+  @for $i from 1 through $colors-count
+    $name: nth($colors-name, $i)
+    $background: nth($colors-light, $i)
+    $border: nth($colors-medium, $i)
+
+    &.#{$name} li, li.#{$name}
+      &:before
+        background: $background
+        border-color: $border
+
+
+.ordered-list
+  li
+    padding-left: 38px
+
+    +before
+      +absolute(50%)
+      +ol-bullet
+
+    +after(counter(items))
+      background: $pad-color
+      color: $color-grey-9
+      border-top: 2px solid $color-grey-6
+      margin-top: -14px
+      text-align: center
+      font-weight: 500
+
+      +font-block(0.8, 1.4)
+      +absolute(50%, 4px)
+      +box(22px, 22px)
+      +box-shadow(inset 0 1px 3px transparentize($color-grey-8, 0.3))
+      +border-radius(50%)
+
+    &:before
+      margin-top: -17px
+
+      +box(30px, 30px)
+
+  @for $i from 1 through $colors-count
+    $name: nth($colors-name, $i)
+    $border: nth($colors-medium, $i)
+
+    &.#{$name} li, li.#{$name}
+      &:after
+        border-color: $border
+
+
+.unordered-list
+  li
+    padding-left: 28px
+
+    +before
+      margin-top: -12px
+
+      +absolute(50%)
+      +ul-bullet
+

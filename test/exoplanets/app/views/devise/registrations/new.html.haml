@@ -1,0 +1,21 @@
+- content_for :head do
+  = javascript_include_tag "jquery.YAPSM.min", "jquery.pwdcalc"
+
+%h2 Sign up
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
+  %fieldset.inputs
+    / = f.error_notification
+    / = devise_error_messages!
+
+    = f.input :email, :required => true
+    .pure-g
+      .pure-u-1-2= f.input :first_name
+      .pure-u-1-2= f.input :last_name
+
+    .password
+      = f.input :password, :required => true, as: :pwdcalc_simple, placeholder: 'simple_form.placeholders.user.password'.t
+      = f.input :password_confirmation
+
+  = default_actions submit: 'actions.sign_up'.t, icon: 'icon-off', class: 'large', no_cancel: true
+
+= render "devise/shared/links"

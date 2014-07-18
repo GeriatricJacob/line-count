@@ -1,0 +1,9 @@
+- content_for :head do
+  /= javascript_include_tag 'planets/random', 'planets/boot'
+  /= stylesheet_link_tag 'planets/planets'
+  /= javascript_include_tag 'pixi_boot'
+  = javascript_include_tag 'three_boot'
+
+%h3 Home
+
+#stage

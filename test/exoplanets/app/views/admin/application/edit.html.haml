@@ -1,0 +1,15 @@
+- icon_remove = '<i class="icon-remove"></i>'.html_safe
+
+- pill icon_remove + 'admin.actions.destroy'.t, controller.resource_path(:destroy), method: :delete, confirm: 'confirm.default'.t, class: 'red'
+
+- breadcrumb resource_class.model_name.human.pluralize(I18n.locale), controller.resource_location(:index)
+- breadcrumb 'admin.actions.edit'.t
+
+
+- content_for :before_content do
+  = breadcrumbs
+
+- content_for :content_header do
+  = pills
+
+= render 'form'

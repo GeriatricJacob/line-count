@@ -1,0 +1,11 @@
+- unless item.roles.empty?
+  .roles
+    - if item.has_role :admin
+      .badge.admin admin
+    - if item.has_role :superuser
+      .badge.superuser superuser
+
+.avatar
+  %figure
+    - if item.avatar.present?
+      = image_tag item.avatar.small_thumb

@@ -1,0 +1,207 @@
+
++for-types(checkbox radio boolean)
+  & + &
+    margin-top: $fib-6
+
+  .error
+    color: $color-grey-8
+    margin-bottom: 0
+
+    +text-shadow(none)
+
+  &.field_with_hint .hint
+    margin-bottom: $fib-6
+
+  input
+    display: none
+
+  label
+    display: block
+    position: relative
+    cursor: pointer
+    z-index: 1
+
+    +font-block(2, 3)
+
+  input[type=radio] + label
+    position: relative
+    padding-left: $fib-9
+
+    +before
+      background: $color-blue-dark
+      border: 0px solid $pad-border-color
+      border-top-width: 4px
+      margin-top: -24px
+
+      +absolute(50%)
+      +border-radius(50%)
+      +inline-box(48px, 48px)
+      +box-sizing(border-box)
+
+    +after
+      background: $pad-color
+      margin-top: -24px
+
+      +transition(all 0.3s)
+      +absolute(50%, 4px)
+      +border-radius(50%)
+      +inline-box(40px, 40px)
+      +box-shadow(0 5px 0 $pad-border-color, 0 5px 5px rgba(0,0,0,0.5))
+      +box-sizing(border-box)
+
+  &.radio:not(.disabled):hover input + label:after
+    margin-top: -26px
+
+    +box-shadow(0 7px 0 $pad-border-color, 0 7px 5px rgba(0,0,0,0.5))
+
+  &.radio:not(.disabled):hover input:checked + label:after
+    margin-top: -21px
+
+    +box-shadow(0 3px 0 $color-green-medium, 0 3px 5px rgba(0,0,0,0.5))
+
+  &.radio.field_with_errors:not(.disabled) input:checked + label:after
+    background: $color-red-light
+    +box-shadow(0 2px 0 $color-red-medium, 0 2px 5px rgba(0,0,0,0.5))
+
+  &.radio.field_with_errors:not(.disabled):hover input:checked + label:after
+    background: $color-red-light
+    +box-shadow(0 3px 0 $color-red-medium, 0 3px 5px rgba(0,0,0,0.5))
+
+  input[type=radio]:checked + label
+    &:after
+      background: $color-green-light
+      margin-top: -20px
+
+      +box-shadow(0 2px 0 $color-green-medium, 0 2px 5px rgba(0,0,0,0.5))
+
+
+  input[type=checkbox] + label
+    position: relative
+    padding-left: $fib-10
+
+    +before('on         off')
+      @extend %button-font-small
+
+      color: $color-grey-4
+      line-height: 2.5rem
+      text-indent: 9px
+      background: $color-blue-dark
+      border: 0px solid $pad-border-color
+      border-top-width: 4px
+      margin-top: -24px
+      white-space: pre
+
+      +transition(all 0.3s)
+      +absolute(50%)
+      +border-radius(24px)
+      +inline-box($fib-10 - 9px, 48px)
+      +box-sizing(border-box)
+      +box-shadow(inset 0 1px 3px rgba(0,0,0,0.5))
+
+
+    +after
+      background: $pad-color
+      margin-top: -28px
+
+      +transition(all 0.3s)
+      +absolute(50%, 0)
+      +border-radius(50%)
+      +inline-box(48px, 48px)
+      +box-shadow(0 4px 0 $pad-border-color, 0 4px 5px rgba(0,0,0,0.5))
+      +box-sizing(border-box)
+
+  input[type=checkbox]:checked + label
+    &:after
+      margin-left: 32px
+
+    &:before
+      color: $color-grey-8
+      background: $color-green-light
+
+  &.checkbox:not(.disabled):hover input + label:after
+    margin-top: -31px
+
+    +box-shadow(0 6px 0 $pad-border-color, 0 6px 5px rgba(0,0,0,0.5))
+
+  &.checkbox.field_with_errors input:checked + label:before
+    background: $color-red-light
+
+  .small &, &.small
+    label
+      +font-block(1,1.2)
+
+    input[type=checkbox] + label
+      padding: $fib-2 $fib-4 $fib-2 $fib-9
+
+      +before('on     off')
+        margin-top: -12px
+        border-top-width: 2px
+        text-indent: $fib-4
+
+        +inline-box($fib-9 - 9px, 24px)
+        +font-block(0.5, 1.3)
+
+      &:after
+        margin-top: -13px
+
+        +inline-box(24px)
+        +box-shadow(0 2px 0 $pad-border-color, 0 2px 5px rgba(0,0,0,0.5))
+
+
+    input[type=checkbox]:checked + label
+      &:after
+        margin-left: 21px
+
+    input[type=radio] + label
+      &:before
+        margin-top: -12px
+        border-top-width: 2px
+        +box(24px)
+
+      &:after
+        margin-top: -12px
+        left: 2px
+        +box-shadow(0 2px 0 $pad-border-color, 0 2px 4px rgba(0,0,0,0.5))
+        +box(20px)
+
+    &.radio
+      label
+        padding-left: 33px
+
+
+    &.radio input:checked + label:after
+      +box-shadow(0 2px 0 $color-green-medium, 0 2px 5px rgba(0,0,0,0.5))
+
+    &.radio:not(.disabled):hover input + label:after
+      margin-top: -26px
+
+      +box-shadow(0 4px 0 $pad-border-color, 0 4px 5px rgba(0,0,0,0.5))
+
+    &.radio:not(.disabled):hover input:checked + label:after
+      margin-top: -12px
+
+      +box-shadow(0 2px 0 $color-green-medium, 0 2px 5px rgba(0,0,0,0.5))
+
+    &.radio.field_with_errors:not(.disabled) input:checked + label:after
+      background: $color-red-light
+      +box-shadow(0 2px 0 $color-red-medium, 0 2px 5px rgba(0,0,0,0.5))
+
+    &.radio.field_with_errors:not(.disabled):hover input:checked + label:after
+      background: $color-red-light
+      +box-shadow(0 2px 0 $color-red-medium, 0 2px 5px rgba(0,0,0,0.5))
+
+    &:not(.disabled):hover
+      input[type=checkbox] + label
+        &:after
+          margin-top: -15px
+          +box-shadow(0 4px 0 $pad-border-color, 0 4px 5px rgba(0,0,0,0.5))
+
+      input[type=radio] + label
+        &:after
+          margin-top: -14px
+          +box-shadow(0 4px 0 $pad-border-color, 0 4px 4px rgba(0,0,0,0.5))
+
+    .hint
+      &:before
+        height: 12px
+        margin-top: 12px

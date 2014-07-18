@@ -1,0 +1,14 @@
+- colors = ['', 'blue', 'green', 'yellow', 'red']
+
+.pure-g
+  .pure-u-1-2
+    %ul.unordered-list
+      - 5.times do |i|
+        - cls = colors[i]
+        %li{class: cls}= "List item #{i}"
+
+  .pure-u-1-2
+    %ol.ordered-list
+      - 5.times do |i|
+        - cls = colors[i]
+        %li{class: cls}= "List item #{i}"

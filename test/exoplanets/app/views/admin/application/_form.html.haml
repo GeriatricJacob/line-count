@@ -1,0 +1,7 @@
+
+= simple_form_for resource, url: [:admin, resource] do |f|
+  %fieldset.inputs= inputs_for resource, f
+
+  - submit = resource.new_record? ? 'actions.create'.t : 'actions.update'.t
+
+  = default_actions submit: submit

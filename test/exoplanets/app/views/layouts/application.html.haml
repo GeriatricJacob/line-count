@@ -1,0 +1,47 @@
+!!!5
+= cc_html class: 'no-js' do
+  %head
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}
+
+    %title= content_for?(:title) ? yield(:title) : "Exoplanets"
+
+    %meta{content: content_for?(:description) ? yield(:description) : "Exoplanets", name: "description"}
+
+    = render partial: 'shared/head'
+
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+
+    = yield :head
+
+  %body{class: "#{controller_name} #{action_name}"}
+    = render partial: 'shared/navigation'
+
+    .gutter
+      #before-header.pure-g
+        #before-header-left.pure-u-1-2= yield :before_header_left
+        #before-header-right.pure-u-1-2= yield :before_header_right
+
+      %header#header.pure-g
+        #header-left.pure-u-1-2
+          %h1 <span class='blue'>exo</span>planets
+          = yield :header_left
+        #header-right.pure-u-1-2
+          = render partial: 'admin/shared/session'
+          = yield :header_right
+
+      #before-content
+        = render 'layouts/messages'
+        = yield :messages
+
+        = yield :before_content
+
+      #content
+        %header#content-header= yield :content_header
+        = yield
+        %footer#content-footer= yield :content_footer
+
+      #after-content
+        = yield :after_content
+
+      %footer#footer

@@ -1,0 +1,311 @@
++for-types(select)
+  z-index: inherit
+
+  select
+    width: 100px
+
+  .chosen-drop
+    border: 0px solid $pad-border-color
+    background: $pad-color
+
+    +pad(2px)
+    +border-radius(6px, 8px)
+    +box-shadow(0 3px 3px $pad-shadow-color)
+
+    .chosen-search
+      padding: $fib-4 $fib-5
+
+      +relative
+      +before('\f002')
+        width: 20px
+        display: block
+        right: 16px
+        font-family: $font-awesome
+        color: $color-grey-5
+
+        +absolute(12px, initial)
+        +font-block(1.2, 1.5)
+
+    .chosen-results
+      padding-left: $fib-5
+      margin-bottom: $fib-4
+      margin-right: $fib-5
+
+      .no-results
+        @extend .error
+
+        color: $color-grey-8 !important
+        margin: 0 !important
+
+        +font-block(1, 1.2)
+        +text-shadow(none !important)
+
+      li
+        +font-block(1.4, 1.6)
+
+        &.highlighted
+          background: $color-blue-light
+
+
+    input[type=text]
+      background: $color-blue-dark
+      border: 0px solid $pad-border-color
+      padding: $fib-4 $fib-5
+      color: $color-grey-5
+      font-weight: 500
+
+      +border-radius($fib-3, $fib-4)
+      +inner-pad(2px)
+      +font-block(1.2, 1.5)
+
+  .small &, &.small
+    .chosen-drop
+      .chosen-search
+        &:before
+          top: 10px
+
+        input[type=text]
+          +font-block(1, 1.2)
+
+
+      .chosen-results
+        li
+          +font-block(1, 1.2)
+
++for-types('select:not(.multiple)')
+  label
+    background: $pad-color
+    padding: $fib-3 $fib-5 $fib-3 $fib-5
+    border: 0px solid $pad-border-color
+    z-index: 10
+    vertical-align: top
+    font-weight: 400
+    width: 136px
+    text-align: right
+    white-space: nowrap
+
+    +pad(1px)
+    +absolute
+    +border-radius(6px 2px 6px 2px, 8px 2px 8px 2px)
+    +box-shadow(0 1px 2px $pad-shadow-color)
+
+    margin-left: -2px
+    margin-top: -2px
+
+    @extend %button-font
+
+    &.required
+      padding-right: 27px
+
+      i
+        color: $color-red-light
+        right: $fib-5
+
+        +absolute(4px, inherit)
+        +text-shadow(0 1px 3px transparentize($color-blue-dark, 0.6))
+
+  &:hover
+    .chosen-single
+      background: lighten($pad-color, 10)
+
+    .chosen-with-drop .chosen-single
+      background: $pad-color
+
+  .chosen-container
+    height: 85px
+
+    +border-radius(6px, 8px)
+    +box-shadow(0 2px 3px $pad-shadow-color)
+
+    &.chosen-with-drop
+      +border-bottom-left-radius(0)
+      +border-bottom-right-radius(0)
+
+      .chosen-single
+        border-bottom-width: 0
+        +border-bottom-left-radius(0)
+        +border-bottom-right-radius(0)
+
+        div b:before
+          content: '\f056'
+
+      .chosen-drop
+        +border-top-left-radius(0)
+        +border-top-right-radius(0)
+
+  .chosen-single
+    height: 100%
+    overflow: visible
+
+    border: 0px solid $pad-border-color
+    background: $pad-color
+
+    +pad(2px)
+    +border-radius(6px, 8px)
+    +transition(background 0.3s)
+    +box-shadow(none)
+
+    margin-top: 0
+
+    span
+      padding: $fib-7 + 8px $fib-7 0 $fib-7
+
+      +font-block(2, 3)
+
+    div
+      width: 40px
+      padding: $fib-7 + 10px 0 0
+
+      b
+        background: none
+
+        +before('\f055')
+          font-family: $font-awesome
+          color: $color-blue-light
+
+          +font-block(2, 3)
+
+
+  .small &, &.small
+    .chosen-container
+      height: 36px
+
+    .chosen-single
+      span
+        height: 32px
+        padding: $fib-4 + 2px $fib-5 0 135px
+
+        +font-block(1, 1.2)
+
+      div
+        width: 30px
+        padding: $fib-4 0 0
+
+        b:before
+          +font-block(1.5, 1.5)
+
++for-types('select.multiple')
+
+  @extend %input-background
+
+  .chosen-drop
+    padding-top: $fib-4
+    min-height: 36px
+    overflow: visible
+
+    +border-top-right-radius(0)
+
+    +after
+      right: 0
+      height: 5px
+      width: 160px
+
+      display: block
+      background: $pad-color
+
+      +absolute(0, initial)
+
+    +before
+      right: 0
+      height: 24px
+      width: 136px
+
+      display: block
+      background: $pad-color
+
+      +border-top-right-radius(6px 8px)
+      +border-top-left-radius(6px 8px)
+      +box-shadow(0 2px 3px $pad-shadow-color)
+      +absolute(-24px, initial)
+
+    .chosen-results
+      position: static
+      +before
+        display: block
+        width: 8px
+        height: 8px
+        background: transparent
+        border: 5px solid $pad-color
+        margin-top: -13px
+        right: 131px
+
+        border-top-color: transparent
+        border-left-color: transparent
+
+        +absolute(0, initial)
+        +border-bottom-right-radius(14px 16px)
+
+
+  .chosen-choices
+    min-height: 81px
+    background: none
+    border: none
+    padding: $fib-7 + $fib-5 $fib-3 0
+
+    +box-shadow(none !important)
+
+    li.search-field
+      +absolute(0, $fib-11)
+      input[type="text"]
+        color: $color-grey-5 !important
+        width: 20 !important
+        height: auto
+
+        +font-block(1, 1.2)
+        +text-shadow(0px 1px 3px rgba(0, 0, 0, 0.7))
+
+        &.default
+          height: auto
+          width: auto !important
+
+
+    li.search-choice
+      background: $pad-color
+      border: 0px solid $pad-border-color
+
+      +pad(2px)
+      +font-block(2, 2.4)
+      +box-shadow(0 2px 2px rgba(0,0,0,0.5))
+
+      margin-top: 0px
+      margin-bottom: $fib-4
+      padding-right: $fib-9
+
+      .search-choice-close
+        background: none
+        border-width: 0 !important
+        height: auto
+        width: auto
+        right: $fib-6
+
+        +font-block(2, 2.3)
+
+        +before('\f057')
+          color: $color-red-light
+          font-family: $font-awesome
+
+
+  label
+    z-index: 3
+    @extend %input-label
+
+  .small &, &.small
+    .chosen-choices
+      min-height: 32px
+
+      li.search-choice
+        padding-right: $fib-7
+
+        +font-block(1, 1.2)
+
+        .search-choice-close
+          right: $fib-3
+
+          +font-block(1, 1.1)
+
+      li.search-field
+        input[type="text"]
+          color: $pad-color
+
+          +font-block(1, 1.2)
+

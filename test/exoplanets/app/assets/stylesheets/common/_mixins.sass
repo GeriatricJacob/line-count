@@ -1,0 +1,134 @@
+@import mixins/geometry
+@import mixins/responsive
+
+=vendor-prefix($name, $argument)
+  #{$name}: $argument
+  -webkit-#{$name}: $argument
+  -ms-#{$name}: $argument
+  -moz-#{$name}: $argument
+  -o-#{$name}: $argument
+
+=text-ellipsis()
+  overflow: hidden
+  white-space: nowrap
+  +vendor-prefix(text-overflow, ellipsis)
+
+=placeholder()
+  &::-webkit-input-placeholder
+    @content
+
+  &:-moz-placeholder
+    @content
+
+  &::-moz-placeholder
+    @content
+
+  &:-ms-input-placeholder
+    @content
+
+  &::placeholder
+    @content
+
+=range-thumb()
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    @content
+
+  &::-moz-range-thumb
+    @content
+
+  & .thumb
+    @content
+
+=range-track()
+  & .track
+    @content
+
+  +webkit-only
+    &
+      -webkit-appearance: none
+      @content
+
+  &::-moz-range-track
+    @content
+
+=char-collapse()
+  letter-spacing: -0.31em
+  white-space: nowrap
+
+=reset-char-collapse()
+  letter-spacing: normal
+  white-space: normal
+
+=rem($property, $value)
+  #{$property}: $value * $base-font-size
+  #{$property}: #{$value}rem
+
+=font-block($size, $line)
+  +rem(font-size, $size)
+  +rem(line-height, $line)
+
+=relative($top: 0, $left: 0)
+  position: relative
+  top: $top
+  left: $left
+
+=absolute($top: 0, $left: 0)
+  position: absolute
+  top: $top
+  left: $left
+
+=fixed($top: 0, $left: 0)
+  position: fixed
+  top: $top
+  left: $left
+
+=box($width: auto, $height: $width)
+  display: block
+  width: $width
+  height: $height
+
+=inline-box($width: auto, $height: $width)
+  display: inline-block
+  width: $width
+  height: $height
+
+=inline-list($inlined: true)
+  margin: 0
+  padding: 0
+
+  @if $inlined
+    display: inline-block
+
+  li
+    margin: 0
+    padding: 0
+    list-style: none
+    float: left
+
+=before($content: '')
+  &:before
+    content: $content
+
+    @content
+
+=after($content: '')
+  &:after
+    content: $content
+
+    @content
+
+=before-and-after($content: '')
+  +before($content)
+    @content
+
+  +after($content)
+    @content
+
+=clearfix($height: 0)
+  &:after
+    content: "."
+    display: block
+    height: $height
+    clear: both
+    visibility: hidden

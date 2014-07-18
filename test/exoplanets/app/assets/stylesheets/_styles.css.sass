@@ -1,0 +1,133 @@
+
+html, body
+  +box(100%, 100%)
+  background: $color-blue-very-dark
+
+// body
+//   background: url(/images/0.png)
+
+*
+  +box-sizing(border-box)
+
+
+a
+  color: $color-blue-medium
+  border-bottom: 1px solid transparent
+
+  +transition(color 0.3s, border-color 0.3s)
+
+  &:hover
+    border-bottom: 1px solid $color-blue-light
+
+hr
+  margin: 13px 0
+  height: 5px
+  border: 0px solid $pad-border-color
+  background: $color-grey-9
+
+  +inner-pad(3px)
+  +border-radius(5px)
+
+form
+  border: 0px solid $pad-border-color
+  background: $pad-color
+  margin-bottom: $fib-6
+
+  +inner-pad(2px)
+  +border-radius(5px)
+  +box-shadow(inset 0px 0px 3px lighten($pad-border-color, 5))
+
+fieldset
+  border: none
+  margin: 0
+  padding: 13px 13px
+
+  &.actions
+    background: $color-blue-medium
+    text-align: right
+
+    +char-collapse
+    +border-radius-bottom(5px)
+
+    & > input
+      height: 34px
+
+      &:hover
+        height: 36px
+
+      &:active
+        height: 32px
+
+    & > *
+      +box-shadow(none)
+      +button-group
+
+.row
+  clear: left
+  +char-collapse
+
+.gutter
+  margin: 0 auto
+  width: 860px
+
+  & > *
+    margin-top: 13px
+    margin-bottom: 13px
+
+@media (max-width: 859px)
+  .gutter
+    width: 100%
+    margin: 0
+
+@for $i from 1 through $colors-count
+  $name: nth($colors-name, $i)
+  $color: nth($colors-light, $i)
+
+  span.#{$name}
+    color: $color
+
+#before-header
+#before-header-left
+#before-header-right
+
+#header
+
+#header-left
+  h1
+    color: $color-grey-5
+    text-transform: lowercase
+    margin: 0
+    margin-bottom: $fib-6
+
+    font-weight: normal
+    +font-block(3, 1.4)
+
+#header-right
+  text-align: right
+
+#before-content
+
+#content-header
+  text-align: right
+  margin-bottom: 13px
+
+#content
+  background: $pad-color
+  border: 0px solid $pad-border-color
+  padding: 21px
+
+  +pad(4px)
+  +relative
+  +border-radius(6px, 8px)
+
+  .pure-g
+    margin: $fib-6 (-$fib-4)
+
+    [class*='pure-u-']
+      padding: 0 $fib-4
+
+
+
+#after-content
+
+#footer
