@@ -7,6 +7,7 @@ filewalker = require 'filewalker'
 suffixes = [
   'coffee'
   'js'
+  'hx'
   'c'
   'cc'
   'java'
