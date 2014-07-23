@@ -16,6 +16,7 @@ File types supported are ..
 - Lua
 - Python
 - PHP
+- Haxe
 
 If you want to add a new type contact mark@hahnca.com or better yet, fork this project and do it yourself.
 
