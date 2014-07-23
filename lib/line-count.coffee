@@ -31,6 +31,7 @@ addAttrs = (sfx, aIn, b) ->
   for k, v of b
     a[k] ?= 0
     a[k] += v
+    null
 
 module.exports =
 
@@ -48,9 +49,9 @@ module.exports =
 
       maxS = maxC = maxT = 0
       for label, c of data
-        maxS = Math.max maxS, c.sloc
-        maxC = Math.max maxC, c.cloc
-        maxT = Math.max maxT, c.loc
+        maxS = Math.max maxS, c.source
+        maxC = Math.max maxC, c.comment
+        maxT = Math.max maxT, c.total
         ws = ('' + maxS).length + 1
         wc = ('' + maxC).length + 1
         wt = ('' + maxT).length + 1
@@ -59,7 +60,8 @@ module.exports =
       lines.sort()
       for line in lines
         [label, c] = line
-        add pad(c.sloc, ws) + pad(c.cloc, wc) + pad(c.loc, wt) + '  ' + label
+        add pad(c.source, ws) + pad(c.comment, wc) + pad(c.total, wt) + '  ' + label
+      null
 
     atom.workspaceView.open('Line Count').then (editor) ->
       rootDirPath = atom.project.getRootDirectory().path
@@ -76,6 +78,7 @@ module.exports =
               (sfx = sfxMatch[1]) in suffixes and
               path.indexOf('node_modules') is -1
             code = fs.readFileSync absPath, 'utf8'
+            code = code.replace /\r/g, ''
             try
               counts = sloc code, sfx
             catch e

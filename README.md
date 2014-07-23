@@ -130,4 +130,4 @@ If you want to add a new type contact mark@hahnca.com or better yet, fork this p
 The engine used by line-count is sloc by Markus Kohlhase.  His project can be found [here](https://github.com/flosse/sloc).
 
 ### License
-I would prefer MIT but I am forced to make it GPLv3 because sloc is GPLv3.  I don't think it matters for a tool like this.
+MIT
