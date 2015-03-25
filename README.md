@@ -4,20 +4,28 @@
 
 Press ctrl-shift-L (line-count:open) to open an editor page showing line counts broken down by file, directory, and file type for all files in the project.
 
-File types supported are ..
+File suffixes supported are ..
 
-- CoffeeScript
-- C / C++
-- CSS / SCSS / LESS / Stylus
-- Go
-- HTML
-- Java
-- JavaScript
-- Lua
-- Python
-- PHP
-- Haxe
-
+- .coffee
+- .js
+- .h
+- .hx
+- .hpp
+- .hxx
+- .c
+- .cc
+- .cpp
+- .cxx
+- .java
+- .php
+- .php5
+- .go
+- .css
+- .scss
+- .less
+- .py
+- .html
+-
 If you want to add a new type contact mark@hahnca.com or better yet, fork this project and do it yourself.
 
 ### Example Output
