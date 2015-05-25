@@ -41,7 +41,7 @@ addAttrs = (sfx, aIn, b) ->
 module.exports =
 
   activate: ->
-    atom.workspaceView.command "line-count:open", => @open()
+    @sub = atom.commands.add 'atom-workspace', 'line-count:open': => @open()
 
   open: ->
     text = ''
@@ -68,7 +68,7 @@ module.exports =
         add pad(c.source, ws) + pad(c.comment, wc) + pad(c.total, wt) + '  ' + label
       null
 
-    atom.workspaceView.open('Line Count').then (editor) ->
+    atom.workspace.open('Line Count').then (editor) ->
       rootDirPath = atom.project.getRootDirectory().path
 
       files    = {}
@@ -81,7 +81,8 @@ module.exports =
           sfxMatch = /\.([^\.]+)$/.exec path
           if sfxMatch and
               (sfx = sfxMatch[1]) in suffixes and
-              path.indexOf('node_modules') is -1
+              path.indexOf('node_modules') is -1 and
+              path.indexOf('bower_components') is -1
             code = fs.readFileSync absPath, 'utf8'
             code = code.replace /\r/g, ''
             try
@@ -118,3 +119,7 @@ module.exports =
           editor.setText text
 
         ).walk()
+
+  deactivate: ->
+    @sub.dispose()
+    

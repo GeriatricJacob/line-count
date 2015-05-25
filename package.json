@@ -1,13 +1,18 @@
 {
   "name": "line-count",
   "main": "./lib/line-count",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "Show line counts for files in projects",
-  "activationEvents": ["line-count:open"],
-  "repository": "https://github.com/mark-hahn/line-count",
-  "license": "GPLv3",
+  "activationEvents": [
+    "line-count:open"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mark-hahn/line-count"
+  },
+  "license": "MIT",
   "engines": {
-    "atom": ">0.100.0"
+    "atom": ">0.170.0"
   },
   "dependencies": {
     "moment": "2.7.0",
