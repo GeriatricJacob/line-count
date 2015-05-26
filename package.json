@@ -1,7 +1,7 @@
 {
   "name": "line-count",
   "main": "./lib/line-count",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Show line counts for files in projects",
   "activationEvents": [
     "line-count:open"

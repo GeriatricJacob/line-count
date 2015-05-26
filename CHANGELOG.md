@@ -1,4 +1,7 @@
 
+### 0.3.2 -- 5/25/15
+  style deprecations
+
 ### 0.3.1 -- 5/25/15
   fixed more deprecations
 
