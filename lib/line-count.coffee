@@ -69,7 +69,7 @@ module.exports =
       null
 
     atom.workspace.open('Line Count').then (editor) ->
-      rootDirPath = atom.project.getRootDirectory().path
+      rootDirPath = atom.project.getDirectories()[0].getPath()
 
       files    = {}
       typeData = {}

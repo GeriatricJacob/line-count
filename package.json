@@ -1,11 +1,11 @@
 {
   "name": "line-count",
   "main": "./lib/line-count",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Show line counts for files in projects",
-  "activationEvents": [
-    "line-count:open"
-  ],
+  "activationCommands": {
+    "atom-workspace": ["line-count:open"]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/mark-hahn/line-count"

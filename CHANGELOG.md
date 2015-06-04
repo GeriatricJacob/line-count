@@ -1,4 +1,7 @@
 
+### 0.3.4 -- 6/4/15
+  more deprecations
+
 ### 0.3.3 -- 5/26/15
   selectors
 
