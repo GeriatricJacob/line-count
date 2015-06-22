@@ -1,4 +1,7 @@
 
+### 0.3.5 -- 6/22/15
+  fixed type in readme
+
 ### 0.3.4 -- 6/4/15
   more deprecations
 
