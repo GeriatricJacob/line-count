@@ -1,4 +1,7 @@
 
+### 0.4.0 -- 1/5/16
+  respect .gitignore
+
 ### 0.3.9 -- 1/5/16
   added twig
 

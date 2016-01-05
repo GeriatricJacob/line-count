@@ -1,8 +1,11 @@
 
+console.log 'load'
+
 fs         = require 'fs'
 moment     = require 'moment'
 sloc       = require 'sloc'
 filewalker = require 'filewalker'
+parser     = require 'gitignore-parser'
 
 suffixes = [
   'coffee'
@@ -43,6 +46,10 @@ addAttrs = (sfx, aIn, b) ->
 module.exports =
 
   activate: ->
+    try
+      @gitignore = parser.compile fs.readFileSync ".gitignore", "utf8"
+    catch e
+      @gitignore = null
     @sub = atom.commands.add 'atom-workspace', 'line-count:open': => @open()
 
   open: ->
@@ -70,7 +77,7 @@ module.exports =
         add pad(c.source, ws) + pad(c.comment, wc) + pad(c.total, wt) + '  ' + label
       null
 
-    atom.workspace.open('Line Count').then (editor) ->
+    atom.workspace.open('line-count.txt').then (editor) =>
       rootDirPath = atom.project.getDirectories()[0].getPath()
 
       files    = {}
@@ -78,13 +85,14 @@ module.exports =
       dirs     = {}
       total    = {}
 
-      filewalker(rootDirPath, maxPending: 4).on("file", (path, stats, absPath) ->
-
+      filewalker(rootDirPath, maxPending: 4).on("file", (path, stats, absPath) =>
           sfxMatch = /\.([^\.]+)$/.exec path
           if sfxMatch and
               (sfx = sfxMatch[1]) in suffixes and
               path.indexOf('node_modules') is -1 and
-              path.indexOf('bower_components') is -1
+              path.indexOf('bower_components') is -1 and
+              (not @gitignore or @gitignore.accepts path)
+
             code = fs.readFileSync absPath, 'utf8'
             code = code.replace /\r/g, ''
             try
@@ -124,3 +132,8 @@ module.exports =
 
   deactivate: ->
     @sub.dispose()
+
+
+
+`
+`

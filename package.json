@@ -1,10 +1,12 @@
 {
   "name": "line-count",
   "main": "./lib/line-count",
-  "version": "0.3.9",
+  "version": "0.4.0",
   "description": "Show line counts for files in projects",
   "activationCommands": {
-    "atom-workspace": ["line-count:open"]
+    "atom-workspace": [
+      "line-count:open"
+    ]
   },
   "repository": {
     "type": "git",
@@ -15,8 +17,9 @@
     "atom": ">0.170.0"
   },
   "dependencies": {
+    "filewalker": "0.1.2",
+    "gitignore-parser": "0.0.2",
     "moment": "2.7.0",
-    "sloc": "0.1.0",
-    "filewalker": "0.1.2"
+    "sloc": "0.1.0"
   }
 }
