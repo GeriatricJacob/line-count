@@ -24,6 +24,7 @@ suffixes = [
   'less'
   'py'
   'html'
+  'jade'
 ]
 
 pad = (num, w) ->
