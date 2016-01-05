@@ -24,6 +24,7 @@ suffixes = [
   'less'
   'py'
   'html'
+  'twig'
   'jade'
 ]
 
@@ -123,4 +124,3 @@ module.exports =
 
   deactivate: ->
     @sub.dispose()
-    

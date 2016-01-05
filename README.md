@@ -25,6 +25,7 @@ File suffixes supported are ..
 - .less
 - .py
 - .html
+- .twig
 
 If you want to add a new type contact mark@hahnca.com or better yet, fork this project and do it yourself.
 
