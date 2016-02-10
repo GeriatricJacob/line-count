@@ -8,27 +8,66 @@ filewalker = require 'filewalker'
 parser     = require 'gitignore-parser'
 
 suffixes = [
-  'coffee'
-  'js'
-  'h'
-  'hx'
-  'hpp'
-  'hxx'
-  'c'
-  'cc'
-  'cpp'
-  'cxx'
-  'java'
-  'php'
-  'php5'
-  'go'
-  'css'
-  'scss'
-  'less'
-  'py'
-  'html'
-  'twig'
-  'jade'
+  "asm"
+  "c"
+  "cc"
+  "clj"
+  "cljs"
+  "coffee"
+  "cpp"
+  "cr"
+  "cs"
+  "css"
+  "cxx"
+  "erl"
+  "go"
+  "groovy"
+  "gs"
+  "h"
+  "handlebars", "hbs"
+  "hpp"
+  "hr"
+  "hs"
+  "html", "htm"
+  "hx"
+  "hxx"
+  "hy"
+  "iced"
+  "ino"
+  "jade"
+  "java"
+  "jl"
+  "js"
+  "jsx"
+  "less"
+  "lua"
+  "ls"
+  "ml"
+  "mli"
+  "mochi"
+  "monkey"
+  "mustache"
+  "nix"
+  "nim"
+  "php", "php5"
+  "pl"
+  "py"
+  "r"
+  "rb"
+  "rkt"
+  "rs"
+  "sass"
+  "scala"
+  "scss"
+  "styl"
+  "svg"
+  "swift"
+  "ts"
+  "vb"
+  "xml"
+  "yaml"
+  "m"
+  "mm"
 ]
 
 pad = (num, w) ->
