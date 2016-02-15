@@ -1,4 +1,8 @@
 
+### 0.5.0 -- 2/15/16
+  Update sloc package to version 0.1.10
+  (thanks ejmsoftware)
+  
 ### 0.4.0 -- 1/5/16
   respect .gitignore
 
