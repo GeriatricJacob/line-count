@@ -1,6 +1,4 @@
 
-console.log 'load'
-
 fs         = require 'fs'
 moment     = require 'moment'
 sloc       = require 'sloc'
