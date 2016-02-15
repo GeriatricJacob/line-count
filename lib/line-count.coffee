@@ -8,6 +8,7 @@ parser     = require 'gitignore-parser'
 suffixes = [
   'coffee'
   'js'
+  'jsx'
   'h'
   'hx'
   'hpp'
