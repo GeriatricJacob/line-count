@@ -7,6 +7,7 @@ parser     = require 'gitignore-parser'
 
 suffixes = [
   "asm"
+  "brs"
   "c"
   "cc"
   "clj"
