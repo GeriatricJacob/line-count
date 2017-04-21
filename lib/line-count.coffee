@@ -62,6 +62,7 @@ suffixes = [
   "swift"
   "ts"
   "vb"
+  "vue"
   "xml"
   "yaml"
   "m"
