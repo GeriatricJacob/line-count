@@ -38,6 +38,7 @@ suffixes = [
   "js"
   "jsx"
   "less"
+  "ld"
   "lua"
   "ls"
   "ml"
