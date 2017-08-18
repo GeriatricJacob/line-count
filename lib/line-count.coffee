@@ -48,6 +48,7 @@ suffixes = [
   "mustache"
   "nix"
   "nim"
+  "nut"
   "php", "php5"
   "pl"
   "py"

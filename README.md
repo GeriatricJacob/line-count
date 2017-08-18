@@ -50,6 +50,7 @@ File suffixes supported are ..
 - .mustache
 - .nix
 - .nim
+- .nut
 - .php
 - .php5
 - .pl
