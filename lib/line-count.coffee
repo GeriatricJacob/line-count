@@ -4,6 +4,7 @@ moment     = require 'moment'
 sloc       = require 'sloc'
 filewalker = require 'filewalker'
 parser     = require 'gitignore-parser'
+path       = require 'path'
 
 suffixes = [
   "asm"
@@ -64,6 +65,7 @@ suffixes = [
   "svg"
   "swift"
   "ts"
+  "ttslua"
   "vb"
   "vue"
   "xml"
@@ -118,9 +120,13 @@ module.exports =
         add pad(c.source, ws) + pad(c.comment, wc) + pad(c.total, wt) + '  ' + label
       null
 
-    atom.workspace.open('line-count.txt').then (editor) =>
-      rootDirPath = atom.project.getDirectories()[0].getPath()
+    rootDirPath = atom.project.getDirectories()[0].getPath()
+    editor = atom.workspace.getActiveTextEditor()
+    if editor and editor.getPath()
+      rootDirPath = path.dirname(editor.getPath())
+      console.log rootDirPath
 
+    atom.workspace.open('line-count.txt').then (editor) =>
       files    = {}
       typeData = {}
       dirs     = {}
@@ -137,8 +143,14 @@ module.exports =
 
             code = fs.readFileSync absPath, 'utf8'
             code = code.replace /\r/g, ''
+
+            #hack to make sloc count ttslua as lua
+            type = sfx
+            if type == 'ttslua'
+              type = 'lua'
+
             try
-              counts = sloc code, sfx
+              counts = sloc code, type
             catch e
               add 'Warning: ' + e.message
               return
