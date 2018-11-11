@@ -43,8 +43,11 @@ File suffixes supported are ..
 - .ld
 - .lua
 - .ls
+- .m
+- .md
 - .ml
 - .mli
+- .mm
 - .mochi
 - .monkey
 - .mustache
@@ -69,8 +72,6 @@ File suffixes supported are ..
 - .vb
 - .xml
 - .yaml
-- .m
-- .mm
 
 If you want to add a new type contact mark@hahnca.com or better yet, fork this project and do it yourself.
 
