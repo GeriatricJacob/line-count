@@ -42,8 +42,11 @@ suffixes = [
   "ld"
   "lua"
   "ls"
+  "m"
+  "md"
   "ml"
   "mli"
+  "mm"
   "mochi"
   "monkey"
   "mustache"
@@ -68,8 +71,6 @@ suffixes = [
   "vue"
   "xml"
   "yaml"
-  "m"
-  "mm"
 ]
 
 pad = (num, w) ->
