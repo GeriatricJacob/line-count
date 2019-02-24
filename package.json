@@ -1,7 +1,7 @@
 {
   "name": "line-count",
   "main": "./lib/line-count",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Show line counts for files in projects",
   "activationCommands": {
     "atom-workspace": [
