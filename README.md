@@ -73,7 +73,7 @@ File suffixes supported are ..
 - .xml
 - .yaml
 
-If you want to add a new type contact mark@hahnca.com or better yet, fork this project and do it yourself.
+If you want to add a new type fork this project and do it yourself.
 
 ### Example Output
 
