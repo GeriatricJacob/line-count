@@ -68,6 +68,7 @@ suffixes = [
   "svg"
   "swift"
   "ts"
+  "tsx"
   "ttslua"
   "vb"
   "vue"
@@ -149,6 +150,10 @@ module.exports =
             type = sfx
             if type == 'ttslua'
               type = 'lua'
+
+            #treat tsx as ts
+            if type == 'tsx'
+              type = 'ts'
 
             try
               counts = sloc code, type
