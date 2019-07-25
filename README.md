@@ -1,5 +1,9 @@
 # line-count package
 
+### Description
+
+Fork of Towtow10's line-count atom package with support for `.tsx` file suffix.
+
 ### Usage
 
 Press ctrl-alt-shift-L (line-count:open) to open an editor page showing line counts broken down by file, directory, and file type for all files in the project.
@@ -69,6 +73,7 @@ File suffixes supported are ..
 - .svg
 - .swift
 - .ts
+- .tsx
 - .vb
 - .xml
 - .yaml
