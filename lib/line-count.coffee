@@ -41,6 +41,7 @@ suffixes = [
   "jsx"
   "less"
   "ld"
+  "liquid"
   "lua"
   "ls"
   "m"
