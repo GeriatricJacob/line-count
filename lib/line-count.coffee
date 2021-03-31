@@ -23,6 +23,7 @@ suffixes = [
   "go"
   "groovy"
   "gs"
+  "graphql"
   "h"
   "handlebars", "hbs"
   "hpp"
