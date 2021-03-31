@@ -20,6 +20,7 @@ File suffixes supported are ..
 - .erl
 - .go
 - .groovy
+- .graphql
 - .gs
 - .h
 - .handlebars
@@ -41,6 +42,7 @@ File suffixes supported are ..
 - .jsx
 - .less
 - .ld
+- .liquid
 - .lua
 - .ls
 - .m
