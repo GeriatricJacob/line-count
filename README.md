@@ -41,6 +41,7 @@ File suffixes supported are ..
 - .jsx
 - .less
 - .ld
+- .liquid
 - .lua
 - .ls
 - .m
