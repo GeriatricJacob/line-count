@@ -19,7 +19,7 @@
   "dependencies": {
     "filewalker": "0.1.2",
     "gitignore-parser": "0.0.2",
-    "moment": "2.7.0",
+    "moment": "2.29.2",
     "sloc": "0.1.10"
   }
 }
